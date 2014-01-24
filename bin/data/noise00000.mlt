@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mlt LC_NUMERIC="fr_BE.UTF-8" version="0.8.8" root="/home/db" title="noise:">
+  <profile description="HDV 1440x1080i 25 fps" width="1440" height="1080" progressive="0" sample_aspect_num="4" sample_aspect_den="3" display_aspect_num="16" display_aspect_den="9" frame_rate_num="25" frame_rate_den="1" colorspace="709"/>
+  <producer id="producer0" in="0" out="25">
+    <property name="mlt_type">producer</property>
+    <property name="length">15000</property>
+    <property name="eof">pause</property>
+    <property name="resource">&lt;producer&gt;</property>
+    <property name="aspect_ratio">1,333333</property>
+    <property name="mlt_service">noise</property>
+  </producer>
+  <playlist id="playlist0">
+    <entry producer="producer0" in="0" out="25"/>
+  </playlist>
+  <tractor id="tractor0" title="noise:" global_feed="1" in="0" out="25">
+    <track producer="playlist0"/>
+  </tractor>
+</mlt>
