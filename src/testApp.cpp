@@ -2350,6 +2350,35 @@ void testApp::guiEvent(ofxUIEventArgs &e)
             Haut    =   480;
         }
     }
+    if(e.widget->getName() == "VideoGrid")
+    {
+        ofxUIToggle *toggle = (ofxUIToggle *) e.widget;
+        if(toggle->getValue() ==  1)
+        {
+            ofxOscMessage m;
+            m.setAddress("/bWindow");
+            sender.sendMessage(m);
+        }
+        else
+        {
+
+        }
+    }
+
+    if(e.widget->getName() == "TimeLine")
+    {
+        ofxUIToggle *toggle = (ofxUIToggle *) e.widget;
+        if(toggle->getValue() ==  1)
+        {
+            ofxOscMessage m;
+            m.setAddress("/TimeLine");
+            sender.sendMessage(m);
+        }
+        else
+        {
+
+        }
+    }
 
 }
 
@@ -3244,7 +3273,11 @@ void testApp::setGUI1()
     gui1->addSlider("F_2", 0.0, 255.0, 255, length,dim*2);
     gui1->addSlider("Fade_G", 255.0, 0.0, 255, length,dim*2);
     gui1->addSpacer();
-    gui1->addWidgetDown(new ofxUIToggle(dim*1.5, dim*1.5,  false, "800x600"));
+    gui1->addWidgetDown(new ofxUIButton(dim*2, dim*2,  false, "TimeLine"));
+    gui1->addWidgetRight(new ofxUIButton(dim*2, dim*2,  false, "VideoGrid"));
+    gui1->addWidgetDown(new ofxUIToggle(dim*2, dim*2,  false, "800x600"));
+        gui1->addSpacer();
+
     gui1->addSlider("background", 0.0, 255.0, backgroundColor, length,dim,60);
 
 
