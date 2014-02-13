@@ -15,7 +15,7 @@
 #define RPORT 12347 //incoming
 #define SPORT 12348 //outgoing
 #define NUM_MSG_STRINGS 100
-#define HOST "localhost"
+#define HOST "192.168.1.255"
 
 class testApp : public ofBaseApp, public ofxMidiListener
 {
@@ -253,6 +253,8 @@ class testApp : public ofBaseApp, public ofxMidiListener
        bool bPosition;
        ofxXmlSettings PositionWarp;
        float positionX, positionY, RectX,RectY;
+      bool bWarp;
+      float fOpen1;
 
 
 };

@@ -338,6 +338,7 @@ void testApp::update()
         ofxOscMessage m;
         receiver.getNextMessage(&m);
         cout<<"m.getAddress() "<<m.getAddress() <<endl;
+        cout<<"movieAdress"<<movieAdress<<endl;
 
 
 //        if(m.getAddress() == "/Lum_A1"){
@@ -1024,456 +1025,457 @@ void testApp::draw()
 //	ofRect(5,1024-260,700,400);
 //	ofRect(5+233,1024-260,233,400);
 
-
+    if(bWarp)
+    {
 //----------------------------------WARPING
-    textA1.loadScreenData(xcarreA1, ycarreA1,213,160);
+        textA1.loadScreenData(xcarreA1, ycarreA1,213,160);
 //    textA1.loadScreenData(xcarreA1, ycarreA1,213,160);
 
-    warperPlayerA1.begin();
-    warperPlayerA1.draw();
-    glPushMatrix();
-    ofSetColor(255,255,255,255);
-    textA1.bind();
-    brcosaShaderA1.begin();
-    brcosaShaderA1.setUniformTexture("tex0", textA1, 0);
-    brcosaShaderA1.setUniform3f("avgluma", 0.62,0.62,0.62);
-    brcosaShaderA1.setUniform1f("contrast", Cont_A1/127);
-    brcosaShaderA1.setUniform1f("brightness", Lum_A1/127);
-    brcosaShaderA1.setUniform1f("saturation", Satu_A1/127);
-    ofDisableAlphaBlending();
-    brcosaShaderA1.setUniform1f("alpha", 1);
-    ofPushMatrix();
-    ofTranslate(0,0);
-    glBegin(GL_QUADS);
-    glTexCoord2f(0,0);
-    glVertex3f(0,768,0);
-    glTexCoord2f(213,0);
-    glVertex3f(1024,768,0);
-    glTexCoord2f(213,160);
-    glVertex3f(1024,0,0);
-    glTexCoord2f(0,160);
-    glVertex3f(0,0,0);
-    glEnd();
-    ofPopMatrix();
-    brcosaShaderA1.end();
-    textA1.unbind();
-    glPopMatrix();
-    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
-    ofSetColor(0,0,0,Fade_G);
-    ofFill();
-    ofRect(0,0,1024,768);
+        warperPlayerA1.begin();
+        warperPlayerA1.draw();
+        glPushMatrix();
+        ofSetColor(255,255,255,255);
+        textA1.bind();
+        brcosaShaderA1.begin();
+        brcosaShaderA1.setUniformTexture("tex0", textA1, 0);
+        brcosaShaderA1.setUniform3f("avgluma", 0.62,0.62,0.62);
+        brcosaShaderA1.setUniform1f("contrast", Cont_A1/127);
+        brcosaShaderA1.setUniform1f("brightness", Lum_A1/127);
+        brcosaShaderA1.setUniform1f("saturation", Satu_A1/127);
+        ofDisableAlphaBlending();
+        brcosaShaderA1.setUniform1f("alpha", 1);
+        ofPushMatrix();
+        ofTranslate(0,0);
+        glBegin(GL_QUADS);
+        glTexCoord2f(0,0);
+        glVertex3f(0,768,0);
+        glTexCoord2f(213,0);
+        glVertex3f(1024,768,0);
+        glTexCoord2f(213,160);
+        glVertex3f(1024,0,0);
+        glTexCoord2f(0,160);
+        glVertex3f(0,0,0);
+        glEnd();
+        ofPopMatrix();
+        brcosaShaderA1.end();
+        textA1.unbind();
+        glPopMatrix();
+        ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+        ofSetColor(0,0,0,Fade_G);
+        ofFill();
+        ofRect(0,0,1024,768);
 
-    warperPlayerA1.end();
+        warperPlayerA1.end();
 
-    warperTV1.begin();
-    warperTV1.draw();
-    ofEnableAlphaBlending();
-    ofSetColor(LumTV,LumTV,LumTV,OpacTV);
-    tv1.draw(0, 0,1024,768);
-    ofSetColor(255,255,255,255);
-    reflet.draw(0, 0,1024,768);
-    ofDisableAlphaBlending();
-    warperTV1.end();
+        warperTV1.begin();
+        warperTV1.draw();
+        ofEnableAlphaBlending();
+        ofSetColor(LumTV,LumTV,LumTV,OpacTV);
+        tv1.draw(0, 0,1024,768);
+        ofSetColor(255,255,255,255);
+        reflet.draw(0, 0,1024,768);
+        ofDisableAlphaBlending();
+        warperTV1.end();
 
-    textB1.loadScreenData(xcarreB1, ycarreB1,213,160);
-    warperPlayerB1.begin();
-    warperPlayerB1.draw();
-    glPushMatrix();
-    ofSetColor(255,255,255,255);
-    textB1.bind();
-    brcosaShaderB1.begin();
-    brcosaShaderB1.setUniformTexture("tex0", textB1, 0);
-    brcosaShaderB1.setUniform3f("avgluma", 0.62,0.62,0.62);
-    brcosaShaderB1.setUniform1f("contrast", Cont_B1/127);
-    brcosaShaderB1.setUniform1f("brightness", Lum_B1/127);
-    brcosaShaderB1.setUniform1f("saturation", Satu_B1/127);
-    ofDisableAlphaBlending();
-    brcosaShaderB1.setUniform1f("alpha", 1);
-    ofPushMatrix();
-    ofTranslate(0,0);
-    glBegin(GL_QUADS);
-    glTexCoord2f(0,0);
-    glVertex3f(0,768,0);
-    glTexCoord2f(213,0);
-    glVertex3f(1024,768,0);
-    glTexCoord2f(213,160);
-    glVertex3f(1024,0,0);
-    glTexCoord2f(0,160);
-    glVertex3f(0,0,0);
-    glEnd();
-    ofPopMatrix();
-    brcosaShaderB1.end();
-    textB1.unbind();
-    glPopMatrix();
-    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
-    ofSetColor(0,0,0,Fade_G);
-    ofFill();
-    ofRect(0,0,1024,768);
-    ofDisableBlendMode();
-    warperPlayerB1.end();
+        textB1.loadScreenData(xcarreB1, ycarreB1,213,160);
+        warperPlayerB1.begin();
+        warperPlayerB1.draw();
+        glPushMatrix();
+        ofSetColor(255,255,255,255);
+        textB1.bind();
+        brcosaShaderB1.begin();
+        brcosaShaderB1.setUniformTexture("tex0", textB1, 0);
+        brcosaShaderB1.setUniform3f("avgluma", 0.62,0.62,0.62);
+        brcosaShaderB1.setUniform1f("contrast", Cont_B1/127);
+        brcosaShaderB1.setUniform1f("brightness", Lum_B1/127);
+        brcosaShaderB1.setUniform1f("saturation", Satu_B1/127);
+        ofDisableAlphaBlending();
+        brcosaShaderB1.setUniform1f("alpha", 1);
+        ofPushMatrix();
+        ofTranslate(0,0);
+        glBegin(GL_QUADS);
+        glTexCoord2f(0,0);
+        glVertex3f(0,768,0);
+        glTexCoord2f(213,0);
+        glVertex3f(1024,768,0);
+        glTexCoord2f(213,160);
+        glVertex3f(1024,0,0);
+        glTexCoord2f(0,160);
+        glVertex3f(0,0,0);
+        glEnd();
+        ofPopMatrix();
+        brcosaShaderB1.end();
+        textB1.unbind();
+        glPopMatrix();
+        ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+        ofSetColor(0,0,0,Fade_G);
+        ofFill();
+        ofRect(0,0,1024,768);
+        ofDisableBlendMode();
+        warperPlayerB1.end();
 
-    warperTV2.begin();
-    warperTV2.draw();
-    ofEnableAlphaBlending();
-    ofSetColor(LumTV,LumTV,LumTV,OpacTV);
-    tv2.draw(0, 0,1024,768);
-    ofDisableAlphaBlending();
-    warperTV2.end();
+        warperTV2.begin();
+        warperTV2.draw();
+        ofEnableAlphaBlending();
+        ofSetColor(LumTV,LumTV,LumTV,OpacTV);
+        tv2.draw(0, 0,1024,768);
+        ofDisableAlphaBlending();
+        warperTV2.end();
 
-    textC1.loadScreenData(xcarreC1, ycarreC1,213,160);
-    warperPlayerC1.begin();
+        textC1.loadScreenData(xcarreC1, ycarreC1,213,160);
+        warperPlayerC1.begin();
 
-    warperPlayerC1.draw();
-    glPushMatrix();
-    ofSetColor(255,255,255,255);
-    textC1.bind();
-    brcosaShaderC1.begin();
-    brcosaShaderC1.setUniformTexture("tex0", textC1, 0);
-    brcosaShaderC1.setUniform3f("avgluma", 0.62,0.62,0.62);
-    brcosaShaderC1.setUniform1f("contrast", Cont_C1/127);
-    brcosaShaderC1.setUniform1f("brightness", Lum_C1/127);
-    brcosaShaderC1.setUniform1f("saturation", Satu_C1/127);
-    ofDisableAlphaBlending();
-    brcosaShaderC1.setUniform1f("alpha", 1);
-    ofPushMatrix();
-    ofTranslate(0,0);
-    glBegin(GL_QUADS);
-    glTexCoord2f(0,0);
-    glVertex3f(0,768,0);
-    glTexCoord2f(213,0);
-    glVertex3f(1024,768,0);
-    glTexCoord2f(213,160);
-    glVertex3f(1024,0,0);
-    glTexCoord2f(0,160);
-    glVertex3f(0,0,0);
-    glEnd();
-    ofPopMatrix();
-    brcosaShaderC1.end();
-    textC1.unbind();
-    glPopMatrix();
-    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
-    ofSetColor(0,0,0,Fade_G);
-    ofFill();
-    ofRect(0,0,1024,768);
-    ofDisableBlendMode();
-    warperPlayerC1.end();
+        warperPlayerC1.draw();
+        glPushMatrix();
+        ofSetColor(255,255,255,255);
+        textC1.bind();
+        brcosaShaderC1.begin();
+        brcosaShaderC1.setUniformTexture("tex0", textC1, 0);
+        brcosaShaderC1.setUniform3f("avgluma", 0.62,0.62,0.62);
+        brcosaShaderC1.setUniform1f("contrast", Cont_C1/127);
+        brcosaShaderC1.setUniform1f("brightness", Lum_C1/127);
+        brcosaShaderC1.setUniform1f("saturation", Satu_C1/127);
+        ofDisableAlphaBlending();
+        brcosaShaderC1.setUniform1f("alpha", 1);
+        ofPushMatrix();
+        ofTranslate(0,0);
+        glBegin(GL_QUADS);
+        glTexCoord2f(0,0);
+        glVertex3f(0,768,0);
+        glTexCoord2f(213,0);
+        glVertex3f(1024,768,0);
+        glTexCoord2f(213,160);
+        glVertex3f(1024,0,0);
+        glTexCoord2f(0,160);
+        glVertex3f(0,0,0);
+        glEnd();
+        ofPopMatrix();
+        brcosaShaderC1.end();
+        textC1.unbind();
+        glPopMatrix();
+        ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+        ofSetColor(0,0,0,Fade_G);
+        ofFill();
+        ofRect(0,0,1024,768);
+        ofDisableBlendMode();
+        warperPlayerC1.end();
 
-    warperTV3.begin();
-    warperTV3.draw();
-    ofEnableAlphaBlending();
-    ofSetColor(LumTV,LumTV,LumTV,OpacTV);
-    tv3.draw(0, 0,1024,768);
-    ofDisableAlphaBlending();
-    warperTV3.end();
+        warperTV3.begin();
+        warperTV3.draw();
+        ofEnableAlphaBlending();
+        ofSetColor(LumTV,LumTV,LumTV,OpacTV);
+        tv3.draw(0, 0,1024,768);
+        ofDisableAlphaBlending();
+        warperTV3.end();
 
-    textD1.loadScreenData(xcarreD1, ycarreD1,213,160);
-    warperPlayerD1.begin();
+        textD1.loadScreenData(xcarreD1, ycarreD1,213,160);
+        warperPlayerD1.begin();
 
-    warperPlayerD1.draw();
-    glPushMatrix();
-    ofSetColor(255,255,255,255);
-    textD1.bind();
-    brcosaShaderD1.begin();
-    brcosaShaderD1.setUniformTexture("tex0", textD1, 0);
-    brcosaShaderD1.setUniform3f("avgluma", 0.62,0.62,0.62);
-    brcosaShaderD1.setUniform1f("contrast", Cont_D1/127);
-    brcosaShaderD1.setUniform1f("brightness", Lum_D1/127);
-    brcosaShaderD1.setUniform1f("saturation", Satu_D1/127);
-    ofDisableAlphaBlending();
-    brcosaShaderD1.setUniform1f("alpha", 1);
-    ofPushMatrix();
-    ofTranslate(0,0);
-    glBegin(GL_QUADS);
-    glTexCoord2f(0,0);
-    glVertex3f(0,768,0);
-    glTexCoord2f(213,0);
-    glVertex3f(1024,768,0);
-    glTexCoord2f(213,160);
-    glVertex3f(1024,0,0);
-    glTexCoord2f(0,160);
-    glVertex3f(0,0,0);
-    glEnd();
-    ofPopMatrix();
-    brcosaShaderD1.end();
-    textD1.unbind();
-    glPopMatrix();
-    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
-    ofSetColor(0,0,0,Fade_G);
-    ofFill();
-    ofRect(0,0,1024,768);
-    ofDisableBlendMode();
-    warperPlayerD1.end();
+        warperPlayerD1.draw();
+        glPushMatrix();
+        ofSetColor(255,255,255,255);
+        textD1.bind();
+        brcosaShaderD1.begin();
+        brcosaShaderD1.setUniformTexture("tex0", textD1, 0);
+        brcosaShaderD1.setUniform3f("avgluma", 0.62,0.62,0.62);
+        brcosaShaderD1.setUniform1f("contrast", Cont_D1/127);
+        brcosaShaderD1.setUniform1f("brightness", Lum_D1/127);
+        brcosaShaderD1.setUniform1f("saturation", Satu_D1/127);
+        ofDisableAlphaBlending();
+        brcosaShaderD1.setUniform1f("alpha", 1);
+        ofPushMatrix();
+        ofTranslate(0,0);
+        glBegin(GL_QUADS);
+        glTexCoord2f(0,0);
+        glVertex3f(0,768,0);
+        glTexCoord2f(213,0);
+        glVertex3f(1024,768,0);
+        glTexCoord2f(213,160);
+        glVertex3f(1024,0,0);
+        glTexCoord2f(0,160);
+        glVertex3f(0,0,0);
+        glEnd();
+        ofPopMatrix();
+        brcosaShaderD1.end();
+        textD1.unbind();
+        glPopMatrix();
+        ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+        ofSetColor(0,0,0,Fade_G);
+        ofFill();
+        ofRect(0,0,1024,768);
+        ofDisableBlendMode();
+        warperPlayerD1.end();
 
-    warperTV4.begin();
-    warperTV4.draw();
-    ofEnableAlphaBlending();
-    ofSetColor(LumTV,LumTV,LumTV,OpacTV);
-    tv4.draw(0, 0,1024,768);
-    ofDisableAlphaBlending();
-    warperTV4.end();
+        warperTV4.begin();
+        warperTV4.draw();
+        ofEnableAlphaBlending();
+        ofSetColor(LumTV,LumTV,LumTV,OpacTV);
+        tv4.draw(0, 0,1024,768);
+        ofDisableAlphaBlending();
+        warperTV4.end();
 
-    textE1.loadScreenData(xcarreE1, ycarreE1,213,160);
-    warperPlayerE1.begin();
+        textE1.loadScreenData(xcarreE1, ycarreE1,213,160);
+        warperPlayerE1.begin();
 
-    warperPlayerE1.draw();
-    glPushMatrix();
-    ofSetColor(255,255,255,255);
-    textE1.bind();
-    brcosaShaderE1.begin();
-    brcosaShaderE1.setUniformTexture("tex0", textE1, 0);
-    brcosaShaderE1.setUniform3f("avgluma", 0.62,0.62,0.62);
-    brcosaShaderE1.setUniform1f("contrast", Cont_E1/127);
-    brcosaShaderE1.setUniform1f("brightness", Lum_E1/127);
-    brcosaShaderE1.setUniform1f("saturation", Satu_E1/127);
-    ofDisableAlphaBlending();
-    brcosaShaderE1.setUniform1f("alpha", 1);
-    ofPushMatrix();
-    ofTranslate(0,0);
-    glBegin(GL_QUADS);
-    glTexCoord2f(0,0);
-    glVertex3f(0,768,0);
-    glTexCoord2f(213,0);
-    glVertex3f(1024,768,0);
-    glTexCoord2f(213,160);
-    glVertex3f(1024,0,0);
-    glTexCoord2f(0,160);
-    glVertex3f(0,0,0);
-    glEnd();
-    ofPopMatrix();
-    brcosaShaderE1.end();
-    textE1.unbind();
-    glPopMatrix();
-    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
-    ofSetColor(0,0,0,Fade_G);
-    ofFill();
-    ofRect(0,0,1024,768);
-    ofDisableBlendMode();
-    warperPlayerE1.end();
+        warperPlayerE1.draw();
+        glPushMatrix();
+        ofSetColor(255,255,255,255);
+        textE1.bind();
+        brcosaShaderE1.begin();
+        brcosaShaderE1.setUniformTexture("tex0", textE1, 0);
+        brcosaShaderE1.setUniform3f("avgluma", 0.62,0.62,0.62);
+        brcosaShaderE1.setUniform1f("contrast", Cont_E1/127);
+        brcosaShaderE1.setUniform1f("brightness", Lum_E1/127);
+        brcosaShaderE1.setUniform1f("saturation", Satu_E1/127);
+        ofDisableAlphaBlending();
+        brcosaShaderE1.setUniform1f("alpha", 1);
+        ofPushMatrix();
+        ofTranslate(0,0);
+        glBegin(GL_QUADS);
+        glTexCoord2f(0,0);
+        glVertex3f(0,768,0);
+        glTexCoord2f(213,0);
+        glVertex3f(1024,768,0);
+        glTexCoord2f(213,160);
+        glVertex3f(1024,0,0);
+        glTexCoord2f(0,160);
+        glVertex3f(0,0,0);
+        glEnd();
+        ofPopMatrix();
+        brcosaShaderE1.end();
+        textE1.unbind();
+        glPopMatrix();
+        ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+        ofSetColor(0,0,0,Fade_G);
+        ofFill();
+        ofRect(0,0,1024,768);
+        ofDisableBlendMode();
+        warperPlayerE1.end();
 
-    warperTV5.begin();
-    warperTV5.draw();
-    ofEnableAlphaBlending();
-    ofSetColor(LumTV,LumTV,LumTV,OpacTV);
-    tv5.draw(0, 0,1024,768);
-    ofDisableAlphaBlending();
-    warperTV5.end();
+        warperTV5.begin();
+        warperTV5.draw();
+        ofEnableAlphaBlending();
+        ofSetColor(LumTV,LumTV,LumTV,OpacTV);
+        tv5.draw(0, 0,1024,768);
+        ofDisableAlphaBlending();
+        warperTV5.end();
 
-    textF1.loadScreenData(xcarreF1, ycarreF1,213,160);
-    warperPlayerF1.begin();
+        textF1.loadScreenData(xcarreF1, ycarreF1,213,160);
+        warperPlayerF1.begin();
 
-    warperPlayerF1.draw();
-    glPushMatrix();
-    ofSetColor(255,255,255,255);
-    textF1.bind();
-    brcosaShaderF1.begin();
-    brcosaShaderF1.setUniformTexture("tex0", textF1, 0);
-    brcosaShaderF1.setUniform3f("avgluma", 0.62,0.62,0.62);
-    brcosaShaderF1.setUniform1f("contrast", Cont_F1/127);
-    brcosaShaderF1.setUniform1f("brightness", Lum_F1/127);
-    brcosaShaderF1.setUniform1f("saturation", Satu_F1/127);
-    ofDisableAlphaBlending();
-    brcosaShaderF1.setUniform1f("alpha", 1);
-    ofPushMatrix();
-    ofTranslate(0,0);
-    glBegin(GL_QUADS);
-    glTexCoord2f(0,0);
-    glVertex3f(0,768,0);
-    glTexCoord2f(213,0);
-    glVertex3f(1024,768,0);
-    glTexCoord2f(213,160);
-    glVertex3f(1024,0,0);
-    glTexCoord2f(0,160);
-    glVertex3f(0,0,0);
-    glEnd();
-    ofPopMatrix();
-    brcosaShaderF1.end();
-    textF1.unbind();
-    glPopMatrix();
-    ofEnableBlendMode(OF_BLENDMODE_ALPHA);
-    ofSetColor(0,0,0,Fade_G);
-    ofFill();
-    ofRect(0,0,1024,768);
-    ofDisableBlendMode();
-    warperPlayerF1.end();
+        warperPlayerF1.draw();
+        glPushMatrix();
+        ofSetColor(255,255,255,255);
+        textF1.bind();
+        brcosaShaderF1.begin();
+        brcosaShaderF1.setUniformTexture("tex0", textF1, 0);
+        brcosaShaderF1.setUniform3f("avgluma", 0.62,0.62,0.62);
+        brcosaShaderF1.setUniform1f("contrast", Cont_F1/127);
+        brcosaShaderF1.setUniform1f("brightness", Lum_F1/127);
+        brcosaShaderF1.setUniform1f("saturation", Satu_F1/127);
+        ofDisableAlphaBlending();
+        brcosaShaderF1.setUniform1f("alpha", 1);
+        ofPushMatrix();
+        ofTranslate(0,0);
+        glBegin(GL_QUADS);
+        glTexCoord2f(0,0);
+        glVertex3f(0,768,0);
+        glTexCoord2f(213,0);
+        glVertex3f(1024,768,0);
+        glTexCoord2f(213,160);
+        glVertex3f(1024,0,0);
+        glTexCoord2f(0,160);
+        glVertex3f(0,0,0);
+        glEnd();
+        ofPopMatrix();
+        brcosaShaderF1.end();
+        textF1.unbind();
+        glPopMatrix();
+        ofEnableBlendMode(OF_BLENDMODE_ALPHA);
+        ofSetColor(0,0,0,Fade_G);
+        ofFill();
+        ofRect(0,0,1024,768);
+        ofDisableBlendMode();
+        warperPlayerF1.end();
 
-    warperTV6.begin();
-    warperTV6.draw();
-    ofEnableAlphaBlending();
-    ofSetColor(LumTV,LumTV,LumTV,OpacTV);
-    tv6.draw(0, 0,1024,768);
-    ofDisableAlphaBlending();
-    warperTV6.end();
+        warperTV6.begin();
+        warperTV6.draw();
+        ofEnableAlphaBlending();
+        ofSetColor(LumTV,LumTV,LumTV,OpacTV);
+        tv6.draw(0, 0,1024,768);
+        ofDisableAlphaBlending();
+        warperTV6.end();
 //////////------------------------------------------------PREVIEW
-    ofSetColor(255,255,255);
+        ofSetColor(255,255,255);
 //       textA1.draw(255,20+160,213,160);
-    textA1.bind();
-    brcosaShaderA1.begin();
-    brcosaShaderA1.setUniformTexture("tex0", textA1, 0);
-    brcosaShaderA1.setUniform3f("avgluma", 0.62,0.62,0.62);
-    brcosaShaderA1.setUniform1f("contrast", Cont_A1/127);
-    brcosaShaderA1.setUniform1f("brightness", Lum_A1/127);
-    brcosaShaderA1.setUniform1f("saturation", Satu_A1/127);
-    ofDisableAlphaBlending();
-    brcosaShaderA1.setUniform1f("alpha", 1);
-    ofPushMatrix();
-    ofTranslate(420,450);
-    glBegin(GL_QUADS);
-    glTexCoord2f(0,0);
-    glVertex3f(0,160/3,0);
-    glTexCoord2f(213,0);
-    glVertex3f(213/3,160/3,0);
-    glTexCoord2f(213,160);
-    glVertex3f(213/3,0,0);
-    glTexCoord2f(0,160);
-    glVertex3f(0,0,0);
-    glEnd();
-    ofPopMatrix();
-    brcosaShaderA1.end();
-    textA1.unbind();
+        textA1.bind();
+        brcosaShaderA1.begin();
+        brcosaShaderA1.setUniformTexture("tex0", textA1, 0);
+        brcosaShaderA1.setUniform3f("avgluma", 0.62,0.62,0.62);
+        brcosaShaderA1.setUniform1f("contrast", Cont_A1/127);
+        brcosaShaderA1.setUniform1f("brightness", Lum_A1/127);
+        brcosaShaderA1.setUniform1f("saturation", Satu_A1/127);
+        ofDisableAlphaBlending();
+        brcosaShaderA1.setUniform1f("alpha", 1);
+        ofPushMatrix();
+        ofTranslate(420,450);
+        glBegin(GL_QUADS);
+        glTexCoord2f(0,0);
+        glVertex3f(0,160/3,0);
+        glTexCoord2f(213,0);
+        glVertex3f(213/3,160/3,0);
+        glTexCoord2f(213,160);
+        glVertex3f(213/3,0,0);
+        glTexCoord2f(0,160);
+        glVertex3f(0,0,0);
+        glEnd();
+        ofPopMatrix();
+        brcosaShaderA1.end();
+        textA1.unbind();
 
-    ofSetColor(255,255,255);
+        ofSetColor(255,255,255);
 //        textB1.draw(255+213,20+160,213,160);
-    textB1.bind();
-    brcosaShaderB1.begin();
-    brcosaShaderB1.setUniformTexture("tex0", textB1, 0);
-    brcosaShaderB1.setUniform3f("avgluma", 0.62,0.62,0.62);
-    brcosaShaderB1.setUniform1f("contrast", Cont_B1/127);
-    brcosaShaderB1.setUniform1f("brightness", Lum_B1/127);
-    brcosaShaderB1.setUniform1f("saturation", Satu_B1/127);
-    ofDisableAlphaBlending();
-    brcosaShaderB1.setUniform1f("alpha", 1);
-    ofPushMatrix();
-    ofTranslate(420+71,450);
-    glBegin(GL_QUADS);
-    glTexCoord2f(0,0);
-    glVertex3f(0,160/3,0);
-    glTexCoord2f(213,0);
-    glVertex3f(213/3,160/3,0);
-    glTexCoord2f(213,160);
-    glVertex3f(213/3,0,0);
-    glTexCoord2f(0,160);
-    glVertex3f(0,0,0);
-    glEnd();
-    ofPopMatrix();
-    brcosaShaderB1.end();
-    textB1.unbind();
+        textB1.bind();
+        brcosaShaderB1.begin();
+        brcosaShaderB1.setUniformTexture("tex0", textB1, 0);
+        brcosaShaderB1.setUniform3f("avgluma", 0.62,0.62,0.62);
+        brcosaShaderB1.setUniform1f("contrast", Cont_B1/127);
+        brcosaShaderB1.setUniform1f("brightness", Lum_B1/127);
+        brcosaShaderB1.setUniform1f("saturation", Satu_B1/127);
+        ofDisableAlphaBlending();
+        brcosaShaderB1.setUniform1f("alpha", 1);
+        ofPushMatrix();
+        ofTranslate(420+71,450);
+        glBegin(GL_QUADS);
+        glTexCoord2f(0,0);
+        glVertex3f(0,160/3,0);
+        glTexCoord2f(213,0);
+        glVertex3f(213/3,160/3,0);
+        glTexCoord2f(213,160);
+        glVertex3f(213/3,0,0);
+        glTexCoord2f(0,160);
+        glVertex3f(0,0,0);
+        glEnd();
+        ofPopMatrix();
+        brcosaShaderB1.end();
+        textB1.unbind();
 
-    textC1.bind();
-    brcosaShaderC1.begin();
-    brcosaShaderC1.setUniformTexture("tex0", textC1, 0);
-    brcosaShaderC1.setUniform3f("avgluma", 0.62,0.62,0.62);
-    brcosaShaderC1.setUniform1f("contrast", Cont_C1/127);
-    brcosaShaderC1.setUniform1f("brightness", Lum_C1/127);
-    brcosaShaderC1.setUniform1f("saturation", Satu_C1/127);
-    ofDisableAlphaBlending();
-    brcosaShaderC1.setUniform1f("alpha", 1);
-    ofPushMatrix();
-    ofTranslate(420+71+71,450);
-    glBegin(GL_QUADS);
-    glTexCoord2f(0,0);
-    glVertex3f(0,160/3,0);
-    glTexCoord2f(213,0);
-    glVertex3f(213/3,160/3,0);
-    glTexCoord2f(213,160);
-    glVertex3f(213/3,0,0);
-    glTexCoord2f(0,160);
-    glVertex3f(0,0,0);
-    glEnd();
-    ofPopMatrix();
-    brcosaShaderC1.end();
-    textC1.unbind();
+        textC1.bind();
+        brcosaShaderC1.begin();
+        brcosaShaderC1.setUniformTexture("tex0", textC1, 0);
+        brcosaShaderC1.setUniform3f("avgluma", 0.62,0.62,0.62);
+        brcosaShaderC1.setUniform1f("contrast", Cont_C1/127);
+        brcosaShaderC1.setUniform1f("brightness", Lum_C1/127);
+        brcosaShaderC1.setUniform1f("saturation", Satu_C1/127);
+        ofDisableAlphaBlending();
+        brcosaShaderC1.setUniform1f("alpha", 1);
+        ofPushMatrix();
+        ofTranslate(420+71+71,450);
+        glBegin(GL_QUADS);
+        glTexCoord2f(0,0);
+        glVertex3f(0,160/3,0);
+        glTexCoord2f(213,0);
+        glVertex3f(213/3,160/3,0);
+        glTexCoord2f(213,160);
+        glVertex3f(213/3,0,0);
+        glTexCoord2f(0,160);
+        glVertex3f(0,0,0);
+        glEnd();
+        ofPopMatrix();
+        brcosaShaderC1.end();
+        textC1.unbind();
 
-    textD1.bind();
-    brcosaShaderD1.begin();
-    brcosaShaderD1.setUniformTexture("tex0", textD1, 0);
-    brcosaShaderD1.setUniform3f("avgluma", 0.62,0.62,0.62);
-    brcosaShaderD1.setUniform1f("contrast", Cont_D1/127);
-    brcosaShaderD1.setUniform1f("brightness", Lum_D1/127);
-    brcosaShaderD1.setUniform1f("saturation", Satu_D1/127);
-    ofDisableAlphaBlending();
-    brcosaShaderD1.setUniform1f("alpha", 1);
-    ofPushMatrix();
-    ofTranslate(420,450+54);
-    glBegin(GL_QUADS);
-    glTexCoord2f(0,0);
-    glVertex3f(0,160/3,0);
-    glTexCoord2f(213,0);
-    glVertex3f(213/3,160/3,0);
-    glTexCoord2f(213,160);
-    glVertex3f(213/3,0,0);
-    glTexCoord2f(0,160);
-    glVertex3f(0,0,0);;
-    glEnd();
-    ofPopMatrix();
-    brcosaShaderD1.end();
-    textD1.unbind();
+        textD1.bind();
+        brcosaShaderD1.begin();
+        brcosaShaderD1.setUniformTexture("tex0", textD1, 0);
+        brcosaShaderD1.setUniform3f("avgluma", 0.62,0.62,0.62);
+        brcosaShaderD1.setUniform1f("contrast", Cont_D1/127);
+        brcosaShaderD1.setUniform1f("brightness", Lum_D1/127);
+        brcosaShaderD1.setUniform1f("saturation", Satu_D1/127);
+        ofDisableAlphaBlending();
+        brcosaShaderD1.setUniform1f("alpha", 1);
+        ofPushMatrix();
+        ofTranslate(420,450+54);
+        glBegin(GL_QUADS);
+        glTexCoord2f(0,0);
+        glVertex3f(0,160/3,0);
+        glTexCoord2f(213,0);
+        glVertex3f(213/3,160/3,0);
+        glTexCoord2f(213,160);
+        glVertex3f(213/3,0,0);
+        glTexCoord2f(0,160);
+        glVertex3f(0,0,0);;
+        glEnd();
+        ofPopMatrix();
+        brcosaShaderD1.end();
+        textD1.unbind();
 
-    textE1.bind();
-    brcosaShaderE1.begin();
-    brcosaShaderE1.setUniformTexture("tex0", textE1, 0);
-    brcosaShaderE1.setUniform3f("avgluma", 0.62,0.62,0.62);
-    brcosaShaderE1.setUniform1f("contrast", Cont_E1/127);
-    brcosaShaderE1.setUniform1f("brightness", Lum_E1/127);
-    brcosaShaderE1.setUniform1f("saturation", Satu_E1/127);
-    ofDisableAlphaBlending();
-    brcosaShaderE1.setUniform1f("alpha", 1);
-    ofPushMatrix();
-    ofTranslate(420+71,450+54);
-    glBegin(GL_QUADS);
-    glTexCoord2f(0,0);
-    glVertex3f(0,160/3,0);
-    glTexCoord2f(213,0);
-    glVertex3f(213/3,160/3,0);
-    glTexCoord2f(213,160);
-    glVertex3f(213/3,0,0);
-    glTexCoord2f(0,160);
-    glVertex3f(0,0,0);
-    glEnd();
-    ofPopMatrix();
-    brcosaShaderE1.end();
-    textE1.unbind();
+        textE1.bind();
+        brcosaShaderE1.begin();
+        brcosaShaderE1.setUniformTexture("tex0", textE1, 0);
+        brcosaShaderE1.setUniform3f("avgluma", 0.62,0.62,0.62);
+        brcosaShaderE1.setUniform1f("contrast", Cont_E1/127);
+        brcosaShaderE1.setUniform1f("brightness", Lum_E1/127);
+        brcosaShaderE1.setUniform1f("saturation", Satu_E1/127);
+        ofDisableAlphaBlending();
+        brcosaShaderE1.setUniform1f("alpha", 1);
+        ofPushMatrix();
+        ofTranslate(420+71,450+54);
+        glBegin(GL_QUADS);
+        glTexCoord2f(0,0);
+        glVertex3f(0,160/3,0);
+        glTexCoord2f(213,0);
+        glVertex3f(213/3,160/3,0);
+        glTexCoord2f(213,160);
+        glVertex3f(213/3,0,0);
+        glTexCoord2f(0,160);
+        glVertex3f(0,0,0);
+        glEnd();
+        ofPopMatrix();
+        brcosaShaderE1.end();
+        textE1.unbind();
 
-    textF1.bind();
-    brcosaShaderF1.begin();
-    brcosaShaderF1.setUniformTexture("tex0", textF1, 0);
-    brcosaShaderF1.setUniform3f("avgluma", 0.62,0.62,0.62);
-    brcosaShaderF1.setUniform1f("contrast", Cont_F1/127);
-    brcosaShaderF1.setUniform1f("brightness", Lum_F1/127);
-    brcosaShaderF1.setUniform1f("saturation", Satu_F1/127);
-    ofDisableAlphaBlending();
-    brcosaShaderF1.setUniform1f("alpha", 1);
-    ofPushMatrix();
-    ofTranslate(420+71+71,450+54);
-    glBegin(GL_QUADS);
-    glTexCoord2f(0,0);
-    glVertex3f(0,160/3,0);
-    glTexCoord2f(213,0);
-    glVertex3f(213/3,160/3,0);
-    glTexCoord2f(213,160);
-    glVertex3f(213/3,0,0);
-    glTexCoord2f(0,160);
-    glVertex3f(0,0,0);
-    glEnd();
-    ofPopMatrix();
-    brcosaShaderF1.end();
-    textF1.unbind();
+        textF1.bind();
+        brcosaShaderF1.begin();
+        brcosaShaderF1.setUniformTexture("tex0", textF1, 0);
+        brcosaShaderF1.setUniform3f("avgluma", 0.62,0.62,0.62);
+        brcosaShaderF1.setUniform1f("contrast", Cont_F1/127);
+        brcosaShaderF1.setUniform1f("brightness", Lum_F1/127);
+        brcosaShaderF1.setUniform1f("saturation", Satu_F1/127);
+        ofDisableAlphaBlending();
+        brcosaShaderF1.setUniform1f("alpha", 1);
+        ofPushMatrix();
+        ofTranslate(420+71+71,450+54);
+        glBegin(GL_QUADS);
+        glTexCoord2f(0,0);
+        glVertex3f(0,160/3,0);
+        glTexCoord2f(213,0);
+        glVertex3f(213/3,160/3,0);
+        glTexCoord2f(213,160);
+        glVertex3f(213/3,0,0);
+        glTexCoord2f(0,160);
+        glVertex3f(0,0,0);
+        glEnd();
+        ofPopMatrix();
+        brcosaShaderF1.end();
+        textF1.unbind();
 
-    ofNoFill();
-    ofSetColor(255, 255,255);
-    ofRect(420,450, 213, 106);
+        ofNoFill();
+        ofSetColor(255, 255,255);
+        ofRect(420,450, 213, 106);
 
 
 
 ////////        //----------------------------------------------------PetitePreview
 
-    ofSetColor(0,0,0);
-    ofRect(420,20,213,160+53+53);
-    ofEnableAlphaBlending();
-    ofSetColor(255,255,255,255);
+        ofSetColor(0,0,0);
+        ofRect(420,20,213,160+53+53);
+        ofEnableAlphaBlending();
+        ofSetColor(255,255,255,255);
 
 //        ofPushMatrix();
 //        ofTranslate(0,20+60);
-
+    }
     PlayerA1.draw(420,20+320,71,53);
     PlayerB1.draw(420+71,20+320,71,53);
     PlayerC1.draw(420+71+71,20+320,71,53);
@@ -1775,6 +1777,12 @@ void testApp::draw()
     ofNoFill();
     ofRect(638,18,Larg+4,Haut+4);
 
+
+
+
+    ofSetColor(255,0,0);
+		ofDrawBitmapString(movieAdress, 200,20);
+		ofDrawBitmapString(XML.getValue("dirSize","24",0), 400,20);
 
 
 
@@ -2377,6 +2385,18 @@ void testApp::guiEvent(ofxUIEventArgs &e)
         else
         {
 
+        }
+    }
+    if(e.widget->getName() == "Warp")
+    {
+        ofxUIToggle *toggle = (ofxUIToggle *) e.widget;
+        if(toggle->getValue() ==  1)
+        {
+            bWarp = true;
+        }
+        else
+        {
+            bWarp = false;
         }
     }
 
@@ -3007,7 +3027,7 @@ void testApp::keyPressed(int key)
 ////////
 ////////
 ////////    	}
-    if( key == 'q' )
+ if( key == 'q' )
     {
         if(!bPosition)
         {
@@ -3018,6 +3038,22 @@ void testApp::keyPressed(int key)
             bPosition = false;
         }
     }
+    if( key == ' ' )
+    {
+         fOpen1 =   fOpen1+1;
+         if(fOpen1 >=24){
+         fOpen1 = 0;
+         }
+
+         PlayerA1.closeMovie();
+            movieAdress = XML.getValue("ajout:adres",Adress,fOpen1-1);
+            cout<<"movieAdress"<<movieAdress<<endl;
+            PlayerA1.loadMovie(movieAdress);
+            PlayerA1.play();
+            TotalNumFramesA1 = PlayerA1.getTotalNumFrames();
+            PlayerA1.setLoopState(OF_LOOP_NORMAL);
+    }
+
 
 
 //----------------------
@@ -3225,6 +3261,10 @@ void testApp::setGUI1()
 //	gui1->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
 
     gui1->addSpacer(1);
+    gui1->addWidgetDown(new ofxUIButton("TimeLine",false, dim*2, dim*2));
+    gui1->addWidgetRight(new ofxUIButton("VideoGrid",false, dim*2, dim*2));
+    gui1->addSpacer(1);
+
 //-------------------------- Player_A1_gui1
 //    gui1->addWidgetDown(new ofxUILabel("PlayerA1", OFX_UI_FONT_SMALL));
 
@@ -3235,7 +3275,7 @@ void testApp::setGUI1()
     gui1->addWidgetRight(new ofxUICircleSlider(dim*3, 0.0, 255.0, Lum_E1, "Lum_E1", OFX_UI_FONT_SMALL));
     gui1->addWidgetRight(new ofxUICircleSlider(dim*3, 0.0, 255.0, Lum_F1, "Lum_F1", OFX_UI_FONT_SMALL));
     gui1->addSlider("LumX6", 0.0, 255.0, 127, length,dim*2);
-    gui1->addWidgetDown(new ofxUIToggle(dim*1.5, dim*1.5,  false, "Lum_x6",OFX_UI_FONT_SMALL));
+    gui1->addWidgetDown(new ofxUIToggle("Lum_x6",false,dim*1.5, dim*1.5,   OFX_UI_FONT_SMALL));
 
 
     gui1->addSpacer(1);
@@ -3254,7 +3294,7 @@ void testApp::setGUI1()
     gui1->addWidgetRight(new ofxUICircleSlider(dim*3, 0.0, 255.0, 127, "Op6", OFX_UI_FONT_SMALL));
     gui1->addSlider("OpacityX6", 0.0, 255.0, 127, length,dim*2);
 
-    gui1->addWidgetDown(new ofxUIToggle(dim*1.5, dim*1.5,  false, "Opacity"));
+    gui1->addWidgetDown(new ofxUIToggle("Opacity",false,dim*1.5, dim*1.5,   OFX_UI_FONT_SMALL));
 
 
 
@@ -3265,7 +3305,7 @@ void testApp::setGUI1()
 
     gui1->addSlider("Y_G1", -320.0, 0.0, Y_G1, length,dim*1);
     gui1->addSpacer();
-    gui1->addWidgetDown(new ofxUIToggle(dim*1.5, dim*1.5,  false, "Cam"));
+    gui1->addWidgetDown(new ofxUIToggle("Cam",false,dim*1.5, dim*1.5,   OFX_UI_FONT_SMALL));
 
     gui1->addSlider("WebCam", 0.0, 255.0, WebCam, length,dim*2);
 
@@ -3273,10 +3313,11 @@ void testApp::setGUI1()
     gui1->addSlider("F_2", 0.0, 255.0, 255, length,dim*2);
     gui1->addSlider("Fade_G", 255.0, 0.0, 255, length,dim*2);
     gui1->addSpacer();
-    gui1->addWidgetDown(new ofxUIButton(dim*2, dim*2,  false, "TimeLine"));
-    gui1->addWidgetRight(new ofxUIButton(dim*2, dim*2,  false, "VideoGrid"));
-    gui1->addWidgetDown(new ofxUIToggle(dim*2, dim*2,  false, "800x600"));
-        gui1->addSpacer();
+//    gui1->addWidgetDown(new ofxUIButton(dim*2, dim*2,  false, "TimeLine"));
+//    gui1->addWidgetRight(new ofxUIButton(dim*2, dim*2,  false, "VideoGrid"));
+    gui1->addWidgetDown(new ofxUIToggle("800x600",false,dim*1.5, dim*1.5,   OFX_UI_FONT_SMALL));
+    gui1->addWidgetRight(new ofxUIToggle("Warp",false,dim*1.5, dim*1.5,   OFX_UI_FONT_SMALL));
+    gui1->addSpacer();
 
     gui1->addSlider("background", 0.0, 255.0, backgroundColor, length,dim,60);
 
@@ -3303,30 +3344,30 @@ void testApp::setGUI2()
     gui2->addSpacer();
     gui2->addWidgetDown(new ofxUILabel("Random Tete Lect", OFX_UI_FONT_SMALL));
     gui2->addSpacer();
-    gui2->addWidgetDown(new ofxUIToggle(dim*1.5, dim*1.5,  false, "R_L1",OFX_UI_FONT_SMALL));
-    gui2->addWidgetRight(new ofxUIToggle(dim*1.5, dim*1.5,  false, "R_L2",OFX_UI_FONT_SMALL));
-    gui2->addWidgetRight(new ofxUIToggle(dim*1.5, dim*1.5,  false, "R_L3",OFX_UI_FONT_SMALL));
-    gui2->addWidgetDown(new ofxUIToggle(dim*1.5, dim*1.5,  false, "R_L4",OFX_UI_FONT_SMALL));
-    gui2->addWidgetRight(new ofxUIToggle(dim*1.5, dim*1.5,  false, "R_L5",OFX_UI_FONT_SMALL));
-    gui2->addWidgetRight(new ofxUIToggle(dim*1.5, dim*1.5,  false, "R_L6",OFX_UI_FONT_SMALL));
-    gui2->addWidgetDown(new ofxUIToggle(dim*1.5, dim*1.5,  false, "R_F1",OFX_UI_FONT_SMALL));
-    gui2->addWidgetRight(new ofxUIToggle(dim*1.5, dim*1.5,  false, "R_F2",OFX_UI_FONT_SMALL));
+    gui2->addWidgetDown(new ofxUIToggle("R_L1",false, dim*1.5, dim*1.5,OFX_UI_FONT_SMALL));
+    gui2->addWidgetRight(new ofxUIToggle("R_L2",false, dim*1.5, dim*1.5,OFX_UI_FONT_SMALL));
+    gui2->addWidgetRight(new ofxUIToggle("R_L3",false, dim*1.5, dim*1.5,OFX_UI_FONT_SMALL));
+    gui2->addWidgetDown(new ofxUIToggle("R_L4",false, dim*1.5, dim*1.5,OFX_UI_FONT_SMALL));
+    gui2->addWidgetRight(new ofxUIToggle("R_L5",false, dim*1.5, dim*1.5,OFX_UI_FONT_SMALL));
+    gui2->addWidgetRight(new ofxUIToggle("R_L6",false, dim*1.5, dim*1.5,OFX_UI_FONT_SMALL));
+    gui2->addWidgetDown(new ofxUIToggle("R_F1",false, dim*1.5, dim*1.5,OFX_UI_FONT_SMALL));
+    gui2->addWidgetRight(new ofxUIToggle("R_F2",false, dim*1.5, dim*1.5,OFX_UI_FONT_SMALL));
     gui2->addSpacer();
     gui2->addWidgetDown(new ofxUILabel("Random Open", OFX_UI_FONT_SMALL));
     gui2->addSpacer();
-    gui2->addWidgetDown(new ofxUIToggle(dim*1.5, dim*1.5,  false, "R_Open1",OFX_UI_FONT_SMALL));
-    gui2->addWidgetRight(new ofxUIToggle(dim*1.5, dim*1.5,  false, "R_Open2",OFX_UI_FONT_SMALL));
-    gui2->addWidgetRight(new ofxUIToggle(dim*1.5, dim*1.5,  false, "R_Open3",OFX_UI_FONT_SMALL));
-//    gui2->addWidgetRight(new ofxUIToggle(dim*1.5, dim*1.5,  false, "R_Open4",OFX_UI_FONT_SMALL));
-//    gui2->addWidgetDown(new ofxUIToggle(dim*1.5, dim*1.5,  false, "R_Open5",OFX_UI_FONT_SMALL));
-//    gui2->addWidgetRight(new ofxUIToggle(dim*1.5, dim*1.5,  false, "R_Open6",OFX_UI_FONT_SMALL));
-//    gui2->addWidgetRight(new ofxUIToggle(dim*1.5, dim*1.5,  false, "R_Open7",OFX_UI_FONT_SMALL));
-//    gui2->addWidgetRight(new ofxUIToggle(dim*1.5, dim*1.5,  false, "R_Open8",OFX_UI_FONT_SMALL));
+    gui2->addWidgetDown(new ofxUIToggle("R_Open1",false, dim*1.5, dim*1.5,OFX_UI_FONT_SMALL));
+    gui2->addWidgetRight(new ofxUIToggle("R_Open2",false, dim*1.5, dim*1.5,OFX_UI_FONT_SMALL));
+    gui2->addWidgetRight(new ofxUIToggle("R_Open3",false, dim*1.5, dim*1.5,OFX_UI_FONT_SMALL));
+//    gui2->addWidgetRight(new ofxUIToggle("R_Open4",false, dim*1.5, dim*1.5,OFX_UI_FONT_SMALL));
+//    gui2->addWidgetDown(new ofxUIToggle("R_Open5",false, dim*1.5, dim*1.5,OFX_UI_FONT_SMALL));
+//    gui2->addWidgetRight(new ofxUIToggle("R_Open6",false, dim*1.5, dim*1.5,OFX_UI_FONT_SMALL));
+//    gui2->addWidgetRight(new ofxUIToggle("R_Open7",false, dim*1.5, dim*1.5,OFX_UI_FONT_SMALL));
+//    gui2->addWidgetRight(new ofxUIToggle("R_Open8",false, dim*1.5, dim*1.5,OFX_UI_FONT_SMALL));
 
 //    gui2->addWidgetRight(new ofxUIToggle(dim*1.5, dim*1.5, false, "R_Lect3" ));
 //    gui2->addWidgetRight(new ofxUIToggle(dim*1.5, dim*1.5, false, "R_Lect1" ));
     gui2->addSpacer();
-    gui2->addWidgetRight(new ofxUIToggle(dim*1.5, dim*1.5, false, "Lum_1",OFX_UI_FONT_SMALL ));
+    gui2->addWidgetRight(new ofxUIToggle("Lum_1",false, dim*1.5, dim*1.5,OFX_UI_FONT_SMALL ));
     gui2->addSpacer();
     gui2->addSlider("Sens", 0.0, 255.0, 0.0, dim*2, 120);
     gui2->setWidgetPosition(OFX_UI_WIDGET_POSITION_RIGHT);
@@ -3334,8 +3375,8 @@ void testApp::setGUI2()
     gui2->addSlider("In", 0.0, 255.0, 0.0, dim*2, 120);
     gui2->addSlider("Out", 0.0, 255.0, 0.0, dim*2, 120);
     gui2->addSlider("TimeF", 60.0, 1.001, 0.0, dim*2, 120);
-//    gui2->addWidgetDown(new ofxUIToggle(dim*1.5, dim*1.5,  false, "SendOsc"));
-//    gui2->addWidgetDown(new ofxUIToggle(dim*1.5, dim*1.5,  false, "NoOsc"));
+//    gui2->addWidgetDown(new ofxUIToggle("SendOsc"));
+//    gui2->addWidgetDown(new ofxUIToggle("NoOsc"));
     gui2->setWidgetPosition(OFX_UI_WIDGET_POSITION_DOWN);
     gui2->addWidgetDown(new ofxUILabel("FPS SLIDER", OFX_UI_FONT_MEDIUM));
     gui2->addFPSSlider("FPS SLIDER", length-xInit, dim);
@@ -3387,4 +3428,5 @@ void testApp::setGUI4()
 //
 //    ofAddListener(gui4->newGUIEvent,this,&testApp::guiEvent);
 }
+
 
