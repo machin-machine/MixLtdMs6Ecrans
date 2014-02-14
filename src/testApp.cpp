@@ -304,6 +304,8 @@ void testApp::setup()
     ycarreE1 =  20+160;
     xcarreF1 =  20+620+213+213;
     ycarreF1 =  20+160;
+    xcarreG1 =  640;
+    ycarreG1 =  20;
 
 //    vidGrabber.setVerbose(true);
 //	vidGrabber.initGrabber(640,480);
@@ -937,7 +939,7 @@ void testApp::draw()
 
     ofSetColor(0,0,0);
     ofFill();
-    ofRect(640,20,Larg,Haut);
+    ofRect(xcarreG1,ycarreG1,Larg,Haut);
 
 
 
@@ -947,12 +949,12 @@ void testApp::draw()
     ofEnableAlphaBlending();
 //        ofSetColor(255,255,255,TV1* (Mix_G1/127) );
     ofSetColor(255,255,255,F_2) ;
-    PlayerH1.draw(640,20,Larg,Haut);
+    PlayerH1.draw(xcarreG1,ycarreG1,Larg,Haut);
     ofDisableAlphaBlending();
 
     ofEnableAlphaBlending();
     ofSetColor(255,255,255,F_1);
-    PlayerG1.draw(640,20,Larg,Haut);
+    PlayerG1.draw(xcarreG1,ycarreG1,Larg,Haut);
 //        PlayerG1.draw(320+640,20,640,480);
     ofDisableAlphaBlending();
 
@@ -1775,7 +1777,7 @@ void testApp::draw()
 
     ofSetColor(255,125,0);
     ofNoFill();
-    ofRect(638,18,Larg+4,Haut+4);
+    ofRect(xcarreG1-2,ycarreG1-2,Larg+4,Haut+4);
 
 
 
@@ -1785,6 +1787,9 @@ void testApp::draw()
 		ofDrawBitmapString(XML.getValue("dirSize","24",0), 400,20);
 
 
+    ofSetColor(255,125,0) ;
+    ofFill();
+    ofCircle(xcarreG1-2,ycarreG1+(Haut/2), 4);
 
 }
 //--------------------------------------------------------------
@@ -3070,6 +3075,7 @@ void testApp::keyReleased(int key)
     carreD1= 0;
     carreE1= 0;
     carreF1= 0;
+    carreG1= 0;
 
 //    PositionWarp.saveFile("warpConfigA1.xml");
 //    warperPlayerA1.load("warpConfigA1.xml");
@@ -3139,6 +3145,11 @@ void testApp::mouseDragged(int x, int y, int button)
         xcarreF1  =x;
         ycarreF1 =y;
     }
+    if(carreG1== 1)
+    {
+        xcarreG1  =x;
+        ycarreG1 =y-(Haut/2);
+    }
 
 //    carreA1=0;
 
@@ -3192,13 +3203,22 @@ void testApp::mousePressed(int x, int y, int button)
         carreE1= 0;
 
     }
-    if(x>=xcarreF1-10 &&    x<=xcarreF1+10 && y>=ycarreF1-10 &&    y<=ycarreF1+10 )
+    if(x>=xcarreF1-20 &&    x<=xcarreF1+10 && y>=ycarreF1-10 &&    y<=ycarreF1+10 )
     {
         carreF1= 1;
     }
     else
     {
         carreF1= 0;
+
+    }
+    if(x>=xcarreG1-20 &&    x<=xcarreG1+0 && y>=ycarreG1+(Haut/2)-10 &&    y<=ycarreG1+(Haut/2)+10 )
+    {
+        carreG1= 1;
+    }
+    else
+    {
+        carreG1= 0;
 
     }
 
