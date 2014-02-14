@@ -254,7 +254,7 @@ class testApp : public ofBaseApp, public ofxMidiListener
        bool bPosition;
        ofxXmlSettings PositionWarp;
        float positionX, positionY, RectX,RectY;
-      bool bWarp;
+      bool bWarp, bNbrLect;
       float fOpen1;
 
 
