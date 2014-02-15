@@ -219,6 +219,7 @@ class testApp : public ofBaseApp, public ofxMidiListener
         float   carreD1, xcarreD1, ycarreD1;
         float   carreE1, xcarreE1, ycarreE1;
         float   carreF1, xcarreF1, ycarreF1;
+        float   carreG1, xcarreG1, ycarreG1;
 
         ofVideoGrabber 		vidGrabber;
 
@@ -253,7 +254,7 @@ class testApp : public ofBaseApp, public ofxMidiListener
        bool bPosition;
        ofxXmlSettings PositionWarp;
        float positionX, positionY, RectX,RectY;
-      bool bWarp;
+      bool bWarp, bNbrLect;
       float fOpen1;
 
 

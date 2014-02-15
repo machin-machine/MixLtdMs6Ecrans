@@ -35,8 +35,11 @@ void testApp::setup()
 
 
     //--------------------------Player---------------------------
+
     PlayerA1.loadMovie("v/video1.mov");
+    if (!bNbrLect){
     PlayerA1.play();
+    }
 //    PlayerA1.setPaused(true);
     PlayerA1.setVolume(0.00);
     PlayerA1.setSpeed(1);
@@ -44,7 +47,9 @@ void testApp::setup()
     TotalNumFramesA1 = PlayerA1.getTotalNumFrames();
 //
     PlayerB1.loadMovie("v/video1.mov");
+    if (!bNbrLect){
     PlayerB1.play();
+    }
 //    PlayerB1.setPaused(true);
     PlayerB1.setVolume(0.00);
     PlayerB1.setSpeed(1);
@@ -53,7 +58,9 @@ void testApp::setup()
 
 //
     PlayerC1.loadMovie("v/video2.mov");
+    if (!bNbrLect){
     PlayerC1.play();
+    }
 //    PlayerC1.setPaused(true);
     PlayerC1.setVolume(0.00);
     PlayerC1.setSpeed(1);
@@ -106,15 +113,11 @@ void testApp::setup()
 
     setGUI1();
     setGUI2();
-//    setGUI3();
-//    setGUI4();
+
 
     gui1->setDrawBack(false);
     gui2->setDrawBack(false);
-//    gui3->setDrawBack(false);
-//    gui4->setDrawBack(false);
 
-    ////////////////////////////////////
     ((ofxUISlider*)gui1->getWidget("Lum_A1"))->setValue(127);
     ((ofxUISlider*)gui1->getWidget("Lum_B1"))->setValue(127);
     ((ofxUISlider*)gui1->getWidget("Lum_C1"))->setValue(127);
@@ -137,11 +140,6 @@ void testApp::setup()
     ((ofxUISlider*)gui2->getWidget("TimeF"))->setValue(127);
 
     ((ofxUISlider*)gui2->getWidget("Rand"))->setValue(2);
-
-
-
-
-
 
     frameP1= frameP3= frameP5=frameP7=frameP9=frameP11=127;
     frameP2 =frameP4=frameP6=frameP8=frameP10=frameP12=255;
@@ -178,29 +176,6 @@ void testApp::setup()
 
 //-------------------------- TEXT_A1
     blendMode = OF_BLENDMODE_ALPHA;
-//    textPlayerA1.allocate(800,600,GL_RGB);
-//    textPlayerA2.allocate(800,600,GL_RGB);
-//    textPlayerA3.allocate(800,600,GL_RGB);
-
-//    textPlayerB1.allocate(800,600,GL_RGB);
-//    textPlayerB2.allocate(800,600,GL_RGB);
-//    textPlayerB3.allocate(800,600,GL_RGB);
-
-//    textPlayerC1.allocate(800,600,GL_RGB);
-//    textPlayerC2.allocate(800,600,GL_RGB);
-//    textPlayerC3.allocate(800,600,GL_RGB);
-
-//    textPlayerD1.allocate(800,600,GL_RGB);
-//    textPlayerD2.allocate(800,600,GL_RGB);
-//    textPlayerD3.allocate(800,600,GL_RGB);
-
-//    textPlayerE1.allocate(800,600,GL_RGB);
-//    textPlayerE2.allocate(800,600,GL_RGB);
-//    textPlayerE3.allocate(800,600,GL_RGB);
-
-//    textPlayerF1.allocate(800,600,GL_RGB);
-//    textPlayerF2.allocate(800,600,GL_RGB);
-//    textPlayerF3.allocate(800,600,GL_RGB);
 
     textA1.allocate(640,480,GL_RGB);
     textB1.allocate(640,480,GL_RGB);
@@ -209,27 +184,21 @@ void testApp::setup()
     textE1.allocate(640,480,GL_RGB);
     textF1.allocate(640,480,GL_RGB);
 
-//    textPlayerA1.allocate(800,600,GL_RGB);
     warperPlayerA1.setup();
     warperPlayerA1.load("warpConfigA1.xml");
 
-//    textPlayerB1.allocate(800,600,GL_RGB);
     warperPlayerB1.setup();
     warperPlayerB1.load("warpConfigB1.xml");
 
-//    textPlayerC1.allocate(800,600,GL_RGB);
     warperPlayerC1.setup();
     warperPlayerC1.load("warpConfigC1.xml");
 
-//    textPlayerD1.allocate(800,600,GL_RGB);
     warperPlayerD1.setup();
     warperPlayerD1.load("warpConfigD1.xml");
 
-//    textPlayerE1.allocate(800,600,GL_RGB);
     warperPlayerE1.setup();
     warperPlayerE1.load("warpConfigE1.xml");
 
-//    textPlayerF1.allocate(800,600,GL_RGB);
     warperPlayerF1.setup();
     warperPlayerF1.load("warpConfigF1.xml");
 
@@ -292,25 +261,20 @@ void testApp::setup()
 
     brcosaShaderG1.load( "shaders/brcosa_GLSL");
 
-    xcarreA1 =  20+620;
-    ycarreA1 =  20;
-    xcarreB1 =  20+620+213;
-    ycarreB1 =  20;
-    xcarreC1 =  20+620+213+213;
-    ycarreC1 =  20;
-    xcarreD1 =  20+620;
-    ycarreD1 =  20+160;
-    xcarreE1 =  20+620+213;
-    ycarreE1 =  20+160;
-    xcarreF1 =  20+620+213+213;
-    ycarreF1 =  20+160;
-
-//    vidGrabber.setVerbose(true);
-//	vidGrabber.initGrabber(640,480);
-//	vidGrabber.setDeviceID(0);
-
-
-
+    xcarreA1 =  20+620+60;
+    ycarreA1 =  20+60;
+    xcarreB1 =  20+620+213+60;
+    ycarreB1 =  20+60;
+    xcarreC1 =  20+620+213+213+60;
+    ycarreC1 =  20+60;
+    xcarreD1 =  20+620+60;
+    ycarreD1 =  20+160+60;
+    xcarreE1 =  20+620+213+60;
+    ycarreE1 =  20+160+60;
+    xcarreF1 =  20+620+213+213+60;
+    ycarreF1 =  20+160+60;
+    xcarreG1 =  640+60;
+    ycarreG1 =  20+60;
 
     tv1.loadImage("tv1.png");
     tv2.loadImage("tv2.png");
@@ -318,8 +282,6 @@ void testApp::setup()
     tv4.loadImage("tv4.png");
     tv5.loadImage("tv5.png");
     tv6.loadImage("tv6.png");
-//	reflet.loadImage("reflet.png");
-//                NoOsc=1;
 
     XML.loadFile("mySettings.xml");
 
@@ -330,7 +292,20 @@ void testApp::setup()
 //--------------------------------------------------------------
 void testApp::update()
 {
+//--------------------------Player---------------------------
 
+    if (bNbrLect)
+    {
+        PlayerA1.update();
+        PlayerB1.update();
+        PlayerC1.update();
+    }
+    PlayerD1.update();
+    PlayerE1.update();
+    PlayerF1.update();
+
+    PlayerG1.update();
+    PlayerH1.update();
 
     while(receiver.hasWaitingMessages())
     {
@@ -340,29 +315,13 @@ void testApp::update()
         cout<<"m.getAddress() "<<m.getAddress() <<endl;
         cout<<"movieAdress"<<movieAdress<<endl;
 
-
-//        if(m.getAddress() == "/Lum_A1"){
-//			Lum_A1 = m.getArgAsFloat(0);
-//			cout<<m.getArgAsString(0)<<endl;
-//                }
-//        if(m.getAddress() == "/Lum_B1"){
-//			Lum_B1 = m.getArgAsFloat(0);
-//			cout<<m.getArgAsString(0)<<endl;
-//                }
-//        if(m.getAddress() == "/Lum_C1"){
-//			Lum_C1 = m.getArgAsFloat(0);
-//			cout<<m.getArgAsString(0)<<endl;
-//                }
-
-        if(m.getAddress() == "/LoadXmySettings")
-        {
+        if(m.getAddress() == "/LoadXmySettings"){
             cout<<"XML.loadFileMySettings.xml"<<endl;
             XML.loadFile("mySettings.xml");
         }
 
 
-        if(m.getAddress() == "/Open1")
-        {
+        if(m.getAddress() == "/Open1"){
             PlayerA1.closeMovie();
             movieAdress = XML.getValue("ajout:adres",Adress,m.getArgAsFloat(0)-1);
             cout<<"movieAdress"<<movieAdress<<endl;
@@ -372,8 +331,7 @@ void testApp::update()
             PlayerA1.setLoopState(OF_LOOP_NORMAL);
         }
 
-        if(m.getAddress() == "/Open2")
-        {
+        if(m.getAddress() == "/Open2"){
             PlayerB1.closeMovie();
             movieAdress = XML.getValue("ajout:adres",Adress,m.getArgAsFloat(0)-1);
             cout<<"movieAdress"<<movieAdress<<endl;
@@ -382,8 +340,7 @@ void testApp::update()
             TotalNumFramesB1 = PlayerB1.getTotalNumFrames();
             PlayerB1.setLoopState(OF_LOOP_NORMAL);
         }
-        else if(m.getAddress() == "/Open3" )
-        {
+        else if(m.getAddress() == "/Open3" ){
             PlayerC1.closeMovie();
             movieAdress = XML.getValue("ajout:adres",Adress,m.getArgAsFloat(0)-1);
             cout<<"movieAdress"<<movieAdress<<endl;
@@ -392,8 +349,7 @@ void testApp::update()
             TotalNumFramesC1 = PlayerC1.getTotalNumFrames();
             PlayerC1.setLoopState(OF_LOOP_NORMAL);
         }
-        if(m.getAddress() == "/Open2")
-        {
+        if(m.getAddress() == "/Open2"){
             PlayerD1.closeMovie();
             movieAdress = XML.getValue("ajout:adres",Adress,m.getArgAsFloat(0)-1);
             cout<<"movieAdress"<<movieAdress<<endl;
@@ -402,8 +358,7 @@ void testApp::update()
             TotalNumFramesD1 = PlayerD1.getTotalNumFrames();
             PlayerD1.setLoopState(OF_LOOP_NORMAL);
         }
-        else if(m.getAddress() == "/Open1")
-        {
+        else if(m.getAddress() == "/Open1"){
             PlayerE1.closeMovie();
             movieAdress = XML.getValue("ajout:adres",Adress,m.getArgAsFloat(0)-1);
             cout<<"movieAdress"<<movieAdress<<endl;
@@ -412,8 +367,7 @@ void testApp::update()
             TotalNumFramesE1 = PlayerE1.getTotalNumFrames();
             PlayerE1.setLoopState(OF_LOOP_NORMAL);
         }
-        else if(m.getAddress() == "/Open3" )
-        {
+        else if(m.getAddress() == "/Open3" ){
             PlayerF1.closeMovie();
             movieAdress = XML.getValue("ajout:adres",Adress,m.getArgAsFloat(0)-1);
             cout<<"movieAdress"<<movieAdress<<endl;
@@ -422,8 +376,7 @@ void testApp::update()
             TotalNumFramesF1 = PlayerF1.getTotalNumFrames();
             PlayerF1.setLoopState(OF_LOOP_NORMAL);
         }
-        if(m.getAddress() == "/Open4"  )
-        {
+        if(m.getAddress() == "/Open4"  ){
             PlayerG1.closeMovie();
             movieAdress = XML.getValue("ajout:adres",Adress,m.getArgAsFloat(0)-1);
             cout<<"movieAdress"<<movieAdress<<endl;
@@ -432,8 +385,7 @@ void testApp::update()
             TotalNumFramesG1 = PlayerG1.getTotalNumFrames();
             PlayerG1.setLoopState(OF_LOOP_NORMAL);
         }
-        if(m.getAddress() == "/Open5"  )
-        {
+        if(m.getAddress() == "/Open5"  ){
             PlayerH1.closeMovie();
             movieAdress = XML.getValue("ajout:adres",Adress,m.getArgAsFloat(0)-1);
             cout<<"movieAdress"<<movieAdress<<endl;
@@ -442,47 +394,38 @@ void testApp::update()
             TotalNumFramesH1 = PlayerH1.getTotalNumFrames();
             PlayerH1.setLoopState(OF_LOOP_NORMAL);
         }
-//         if(NoOsc==1){
-        if(m.getAddress() == "/SendOsc"  )
-        {
+
+        if(m.getAddress() == "/SendOsc"  ){
             SendOsc = m.getArgAsFloat(0);
         }
-        if(m.getAddress() == "/Vid"  )
-        {
+        if(m.getAddress() == "/Vid"  ){
             Vid = m.getArgAsFloat(0);
-            if(Vid==1)
-            {
+            if(Vid==1){
                 B1 = 1;
                 frameP2  = In;
             }
-            if(Vid==2)
-            {
+            if(Vid==2){
                 B2 = 1;
                 frameP4  = In;
             }
-            if(Vid==3)
-            {
+            if(Vid==3){
                 B3 = 1;
                 frameP6  = In;
             }
-            if(Vid==4)
-            {
+            if(Vid==4){
                 B4 = 1;
                 frameP8  = In;
             }
-            if(Vid==5)
-            {
+            if(Vid==5){
                 B5 = 1;
                 frameP10  = In;
             }
-            if(Vid==6)
-            {
+            if(Vid==6){
                 B6 = 1;
                 frameP12  = In;
             }
         }
-        if(m.getAddress() == "/SelVid"  )
-        {
+        if(m.getAddress() == "/SelVid"  ){
             SelVid = m.getArgAsString(0);
             PlayerG1.loadMovie(SelVid);
             PlayerG1.play();
@@ -490,43 +433,37 @@ void testApp::update()
 
             cout<<"SelVid"<<"-"<<SelVid<<endl;
         }
-        if(m.getAddress() == "/SelVidA"  )
-        {
+        if(m.getAddress() == "/SelVidA"  ){
             SelVidA = m.getArgAsString(0);
             PlayerA1.loadMovie(SelVidA);
             PlayerA1.play();
             PlayerA1.setLoopState(OF_LOOP_NORMAL);
         }
-        if(m.getAddress() == "/SelVidB"  )
-        {
+        if(m.getAddress() == "/SelVidB"  ){
             SelVidB = m.getArgAsString(0);
             PlayerB1.loadMovie(SelVidB);
             PlayerB1.play();
             PlayerB1.setLoopState(OF_LOOP_NORMAL);
         }
-        if(m.getAddress() == "/SelVidC"  )
-        {
+        if(m.getAddress() == "/SelVidC"  ){
             SelVidC = m.getArgAsString(0);
             PlayerC1.loadMovie(SelVidC);
             PlayerC1.play();
             PlayerC1.setLoopState(OF_LOOP_NORMAL);
         }
-        if(m.getAddress() == "/SelVidD"  )
-        {
+        if(m.getAddress() == "/SelVidD"  ){
             SelVidD= m.getArgAsString(0);
             PlayerD1.loadMovie(SelVidD);
             PlayerD1.play();
             PlayerD1.setLoopState(OF_LOOP_NORMAL);
         }
-        if(m.getAddress() == "/SelVidE"  )
-        {
+        if(m.getAddress() == "/SelVidE"  ){
             SelVidE = m.getArgAsString(0);
             PlayerE1.loadMovie(SelVidE);
             PlayerE1.play();
             PlayerE1.setLoopState(OF_LOOP_NORMAL);
         }
-        if(m.getAddress() == "/SelVidF"  )
-        {
+        if(m.getAddress() == "/SelVidF"  ){
             SelVidF = m.getArgAsString(0);
             PlayerF1.loadMovie(SelVidF);
             PlayerF1.play();
@@ -534,8 +471,7 @@ void testApp::update()
         }
 
 
-        if(SendOsc==1)
-        {
+        if(SendOsc==1){
             if(m.getAddress() == "/Mix_G1"  )
             {
                 Mix_G1 = m.getArgAsFloat(0)*255;
@@ -587,29 +523,7 @@ void testApp::update()
 //////////        }
 
 
-//--------------------------Player---------------------------
-    PlayerA1.update();
-//        if (PlayerA1.isFrameNew()) {
-//        textA1=PlayerA1.getTextureReference();
-//        }
-    PlayerB1.update();
-//        if (PlayerB1.isFrameNew()) {
-//        textB1=PlayerB1.getTextureReference();
-//        }
-    PlayerC1.update();
-//        if (PlayerC1.isFrameNew()) {
-//        textC1=PlayerC1.getTextureReference();
-//        }
-    PlayerD1.update();
-    PlayerE1.update();
-    PlayerF1.update();
 
-    PlayerG1.update();
-//        if (PlayerG1.isFrameNew()) {
-//        textG1=PlayerG1.getTextureReference();
-//        }
-
-    PlayerH1.update();
 
 //--------------------------AUDIO---------------------------
     rms_values.push_back(rms);
@@ -621,8 +535,7 @@ void testApp::update()
 //-------------------------SLIDERS--------------------------
     if(B1 == 1 )
     {
-        if(frameP2 > Out)
-        {
+        if(frameP2 > Out){
             Fade1  =   In;
             frameP1  =   In;
             frameP1  =   frameP2;
@@ -634,8 +547,7 @@ void testApp::update()
 //            ((ofxUIButton*)gui->getWidget("B1"))->setValue(0);
             }
         }
-        if(frameP2 < Out)
-        {
+        if(frameP2 < Out){
             Fade1  =   In;
             frameP1  =   In;
             frameP1  =   frameP2;
@@ -648,15 +560,13 @@ void testApp::update()
 
             }
         }
-        if(Opacity==0)
-        {
+        if(Opacity==0){
             ((ofxUISlider*)gui1->getWidget("Lum_A1"))->setValue(frameP2);
             Fade1 = frameP2;
             Lum_A1 = frameP2;
 
         }
-        if(Opacity==1)
-        {
+        if(Opacity==1){
             ((ofxUISlider*)gui1->getWidget("Lum_A1"))->setValue(127);
             ((ofxUISlider*)gui1->getWidget("Op1"))->setValue(frameP2);
             Fade1 = frameP2;
@@ -668,8 +578,7 @@ void testApp::update()
 //---------------------------------------------------------------------------
     if(B2 == 1 )
     {
-        if(frameP4 > Out)
-        {
+        if(frameP4 > Out){
             Fade2  =   In;
             frameP3  =   In;
             frameP3  =   frameP4;
@@ -681,8 +590,7 @@ void testApp::update()
 //                ((ofxUIButton*)gui->getWidget("B2"))->setValue(0);
             }
         }
-        if(frameP4 < Out)
-        {
+        if(frameP4 < Out){
             Fade2  =   In;
             frameP3  =   In;
             frameP3  =   frameP4;
@@ -695,14 +603,12 @@ void testApp::update()
             }
         }
 
-        if(Opacity==0)
-        {
+        if(Opacity==0){
             ((ofxUISlider*)gui1->getWidget("Lum_B1"))->setValue(frameP4);
             Fade2 = frameP4;
             Lum_B1 = frameP4;
         }
-        if(Opacity==1)
-        {
+        if(Opacity==1){
             ((ofxUISlider*)gui1->getWidget("Lum_B1"))->setValue(127);
             ((ofxUISlider*)gui1->getWidget("Op2"))->setValue(frameP4);
             Fade2 = frameP4;
@@ -712,8 +618,7 @@ void testApp::update()
 //---------------------------------------------------------------------------
     if(B3 == 1   )
     {
-        if(frameP6 > Out)
-        {
+        if(frameP6 > Out){
             Fade3  =   In;
             frameP5  =   In;
             frameP5  =   frameP6;
@@ -726,8 +631,7 @@ void testApp::update()
             }
         }
 
-        if(frameP6 < Out)
-        {
+        if(frameP6 < Out){
             Fade3  =   In;
             frameP5  =   In;
             frameP5  =   frameP6;
@@ -740,14 +644,12 @@ void testApp::update()
 
             }
         }
-        if(Opacity==0)
-        {
+        if(Opacity==0){
             ((ofxUISlider*)gui1->getWidget("Lum_C1"))->setValue(frameP6);
             Fade3 = frameP6;
             Lum_C1 = frameP6;
         }
-        if(Opacity==1)
-        {
+        if(Opacity==1){
             ((ofxUISlider*)gui1->getWidget("Lum_C1"))->setValue(127);
             ((ofxUISlider*)gui1->getWidget("Op3"))->setValue(frameP6);
             Fade3 = frameP6;
@@ -759,8 +661,7 @@ void testApp::update()
     //---------------------------------------------------------------------------
     if(B4 == 1   )
     {
-        if(frameP8 > Out)
-        {
+        if(frameP8 > Out){
             Fade4  =   In;
             frameP7  =   In;
             frameP7 =   frameP8;
@@ -772,8 +673,7 @@ void testApp::update()
 //                        ((ofxUIButton*)gui->getWidget("B3"))->setValue(0);
             }
         }
-        if(frameP8 < Out)
-        {
+        if(frameP8 < Out){
             Fade4  =   In;
             frameP7  =   In;
             frameP7  =   frameP8;
@@ -785,14 +685,12 @@ void testApp::update()
 //                        ((ofxUIButton*)gui->getWidget("B3"))->setValue(0);
             }
         }
-        if(Opacity==0)
-        {
+        if(Opacity==0){
             ((ofxUISlider*)gui1->getWidget("Lum_D1"))->setValue(frameP8);
             Fade4 = frameP8;
             Lum_D1 = frameP8;
         }
-        if(Opacity==1)
-        {
+        if(Opacity==1){
             ((ofxUISlider*)gui1->getWidget("Lum_D1"))->setValue(127);
             ((ofxUISlider*)gui1->getWidget("Op4"))->setValue(frameP8);
             Fade4 = frameP8;
@@ -803,8 +701,7 @@ void testApp::update()
 //---------------------------------------------------------------------------
     if(B5 == 1   )
     {
-        if(frameP10 > Out)
-        {
+        if(frameP10 > Out){
             Fade5  =   In;
             frameP9  =   In;
             frameP9  =   frameP10;
@@ -816,8 +713,7 @@ void testApp::update()
 //                        ((ofxUIButton*)gui->getWidget("B3"))->setValue(0);
             }
         }
-        if(frameP10 < Out)
-        {
+        if(frameP10 < Out){
             Fade5  =   In;
             frameP9  =   In;
             frameP9  =   frameP10;
@@ -831,14 +727,12 @@ void testApp::update()
             }
         }
 
-        if(Opacity==0)
-        {
+        if(Opacity==0){
             ((ofxUISlider*)gui1->getWidget("Lum_E1"))->setValue(frameP10);
             Fade5 = frameP10;
             Lum_E1 = frameP10;
         }
-        if(Opacity==1)
-        {
+        if(Opacity==1){
             ((ofxUISlider*)gui1->getWidget("Lum_E1"))->setValue(127);
             ((ofxUISlider*)gui1->getWidget("Op5"))->setValue(frameP10);
             Fade5 = frameP10;
@@ -848,8 +742,7 @@ void testApp::update()
 //-------------------------------------------------------------
     if(B6 == 1   )
     {
-        if(frameP12 > Out)
-        {
+        if(frameP12 > Out){
             Fade6  =   In;
             frameP11  =   In;
             frameP11  =   frameP12;
@@ -861,8 +754,7 @@ void testApp::update()
 //                        ((ofxUIButton*)gui->getWidget("B3"))->setValue(0);
             }
         }
-        if(frameP12 < Out)
-        {
+        if(frameP12 < Out){
             Fade6  =   In;
             frameP11  =   In;
             frameP11  =   frameP12;
@@ -876,14 +768,12 @@ void testApp::update()
             }
         }
 
-        if(Opacity==0)
-        {
+        if(Opacity==0){
             ((ofxUISlider*)gui1->getWidget("Lum_F1"))->setValue(frameP12);
             Fade6 = frameP12;
             Lum_F1 = frameP12;
         }
-        if(Opacity==1)
-        {
+        if(Opacity==1){
             ((ofxUISlider*)gui1->getWidget("Lum_F1"))->setValue(127);
             ((ofxUISlider*)gui1->getWidget("Op6"))->setValue(frameP12);
             Fade6 = frameP12;
@@ -937,7 +827,7 @@ void testApp::draw()
 
     ofSetColor(0,0,0);
     ofFill();
-    ofRect(640,20,Larg,Haut);
+    ofRect(xcarreG1,ycarreG1,Larg,Haut);
 
 
 
@@ -947,12 +837,12 @@ void testApp::draw()
     ofEnableAlphaBlending();
 //        ofSetColor(255,255,255,TV1* (Mix_G1/127) );
     ofSetColor(255,255,255,F_2) ;
-    PlayerH1.draw(640,20,Larg,Haut);
+    PlayerH1.draw(xcarreG1,ycarreG1,Larg,Haut);
     ofDisableAlphaBlending();
 
     ofEnableAlphaBlending();
     ofSetColor(255,255,255,F_1);
-    PlayerG1.draw(640,20,Larg,Haut);
+    PlayerG1.draw(xcarreG1,ycarreG1,Larg,Haut);
 //        PlayerG1.draw(320+640,20,640,480);
     ofDisableAlphaBlending();
 
@@ -961,38 +851,34 @@ void testApp::draw()
 
     ofEnableAlphaBlending();
     ofSetColor(255,255,255,WebCam) ;
-    vidGrabber.draw(xcarreA1, ycarreA1,213,160);
-    vidGrabber.draw(xcarreB1, ycarreB1,213,160);
-    vidGrabber.draw(xcarreC1, ycarreC1,213,160);
+    if (bNbrLect){
+        vidGrabber.draw(xcarreA1, ycarreA1,213,160);
+        vidGrabber.draw(xcarreB1, ycarreB1,213,160);
+        vidGrabber.draw(xcarreC1, ycarreC1,213,160);
+    }
+
     vidGrabber.draw(xcarreD1, ycarreD1,213,160);
     vidGrabber.draw(xcarreE1, ycarreE1,213,160);
     vidGrabber.draw(xcarreF1, ycarreF1,213,160);
     ofDisableAlphaBlending();
 
+    if (bNbrLect){
 
+        ofEnableBlendMode(blendMode);
+        ofSetColor(255,255,255,Op1);
+        PlayerA1.draw(xcarreA1,ycarreA1,213,160);
+        ofDisableBlendMode();
 
-    ofEnableBlendMode(blendMode);
-    ofSetColor(255,255,255,0);
-    PlayerA1.draw(xcarreA1,ycarreA1,0,0);
-    ofDisableBlendMode();
+        ofEnableBlendMode(blendMode);
+        ofSetColor(255,255,255,Op2);
+        PlayerB1.draw(xcarreB1,ycarreB1,213,160);
+        ofDisableBlendMode();
 
-    ofEnableBlendMode(blendMode);
-    ofSetColor(255,255,255,Op1);
-    PlayerA1.draw(xcarreA1,ycarreA1,213,160);
-    ofDisableBlendMode();
-
-    ;
-
-    ofEnableBlendMode(blendMode);
-    ofSetColor(255,255,255,Op2);
-    PlayerB1.draw(xcarreB1,ycarreB1,213,160);
-    ofDisableBlendMode();
-
-    ofEnableBlendMode(blendMode);
-    ofSetColor(255,255,255,Op3);
-    PlayerC1.draw(xcarreC1,ycarreC1,213,160);
-    ofDisableBlendMode();
-
+        ofEnableBlendMode(blendMode);
+        ofSetColor(255,255,255,Op3);
+        PlayerC1.draw(xcarreC1,ycarreC1,213,160);
+        ofDisableBlendMode();
+    }
     ofEnableBlendMode(blendMode);
     ofSetColor(255,255,255,Op4);
     PlayerD1.draw(xcarreD1,ycarreD1,213,160);
@@ -1528,243 +1414,226 @@ void testApp::draw()
     ofPopStyle();
 
 //--------------------------AUDIO---------------------------
-    ofPushMatrix();
-    ofTranslate(20,20+360);
-    ofSetColor(255, 125, 0);
-    ofLine(0, 125, 250, 125);
-    ofSetColor(150, 150, 150);
-    float amplitude = 100.0f;
-    for (int i = 1; i < 250; i++)
-    {
-        float x1 = (float)i / 250.0;
-        float y1 = amplitude * audioInput[i];   //amplitude * sin( x1 * 2.0*PI );
-        float x2 = (float)(i - 1) / 250.0;
-        float y2 = amplitude * audioInput[i-1]; //amplitude * sin( x2 * 2.0*PI );
-        ofLine(x1 * 250.0f, -y1 + 125,
-               x2 * 250.0f, -y2 + 125);
-    }
-    ofSetRectMode(OF_RECTMODE_CENTER);
-    ofNoFill();
-    ofCircle(125, 125, rms * 250);
-    ofSetRectMode(OF_RECTMODE_CORNER);
-
-    for (int i = 1; i < rms_values.size(); i++)
-    {
-        ofLine((i  ) * 250.0/25.0, -rms_values[i  ]*1000.0 + 250.0,
-               (i-1) * 250.0/25.0, -rms_values[i-1]*1000.0 + 250.0);
-    }
-    float average_rms = 0.0f;
-    for (int i = 0; i < rms_values.size(); i++)
-    {
-        average_rms = average_rms + rms_values[i];
-    }
-    average_rms = average_rms / rms_values.size();
-    float var_rms = 0.0f;
-    for (int i = 0; i < rms_values.size(); i++)
-    {
-        var_rms = var_rms + abs(rms_values[i] - average_rms);
-//         cout<<rms_values[i] - average_rms<<endl;
-    }
-    var_rms = var_rms / rms_values.size();
-    if (rms_values.back() > (average_rms + (Sens/68.5)*var_rms))
-    {
-
-//--------------------------------------------------------
-
-
-
-        startTime = ofGetElapsedTimeMillis();
-
-
-        //--------------------------------------------------------
-
-        if(R_Open1==1   &&  Timer>endTime)
-        {
-            ofxOscMessage m;
-            m.setAddress("/R_Open1");
-            sender.sendMessage(m);
-        }
-        if(R_Open2==1   &&  Timer>endTime)
-        {
-            ofxOscMessage m;
-            m.setAddress("/R_Open2");
-            sender.sendMessage(m);
-        }
-        if(R_Open3==1   &&  Timer>endTime)
-        {
-            ofxOscMessage m;
-            m.setAddress("/R_Open3");
-            sender.sendMessage(m);
-        }
-        if(R_Open4==1   &&  Timer>endTime)
-        {
-            ofxOscMessage m;
-            m.setAddress("/R_Open4");
-            sender.sendMessage(m);
-        }
-        if(R_Open5==1   &&  Timer>endTime)
-        {
-            ofxOscMessage m;
-            m.setAddress("/R_Open5");
-            sender.sendMessage(m);
-        }
-
-        if(R_Open6==1  &&  Timer>endTime)
-        {
-            ofxOscMessage m;
-            m.setAddress("/R_Open6");
-            sender.sendMessage(m);
-        }
-        if(Lum_x6  ==1 &&  Timer>endTime)
-        {
-            C1  =  ofRandom(0,Rand);
-            if(B1!=1)
-            {
-                B1 = C1;
-                frameP2  = In;
-                cout<<"bang1---"<<C1<<endl;
-            }
-
-            C2  =  ofRandom(0,Rand);
-            if(B2!=1)
-            {
-                B2  =   C2;
-                frameP4  = In;
-                cout<<"bang2---"<<C2<<endl;
-            }
-
-            C3  =  ofRandom(0,Rand);
-            if(B3!=1)
-            {
-                B3  =   C3;
-                frameP6  = In;
-                cout<<"bang3---"<<C3<<endl;
-            }
-            C4  =  ofRandom(0,Rand);
-            if(B4!=1)
-            {
-                B4  =   C4;
-                frameP8  = In;
-                cout<<"bang4---"<<C4<<endl;
-            }
-            C5  =  ofRandom(0,Rand);
-            if(B5!=1)
-            {
-                B5  =   C5;
-                frameP10  = In;
-                cout<<"bang5---"<<C5<<endl;
-            }
-            C6  =  ofRandom(0,Rand);
-            if(B6!=1)
-            {
-                B6  =   C6;
-                frameP12  = In;
-                cout<<"bang6---"<<C6<<endl;
-            }
-        }
-
-        if(Opacity  ==1 &&  Timer>endTime)
-        {
-            C1  =  ofRandom(0,Rand);
-            if(B1!=1)
-            {
-                B1 = C1;
-                frameP2  = In;
-                cout<<Opacity<<C1<<endl;
-            }
-
-            C2  =  ofRandom(0,Rand);
-            if(B2!=1)
-            {
-                B2  =   C2;
-                frameP4  = In;
-                cout<<"bang2---"<<C2<<endl;
-            }
-
-            C3  =  ofRandom(0,Rand);
-            if(B3!=1)
-            {
-                B3  =   C3;
-                frameP6  = In;
-                cout<<"bang3---"<<C3<<endl;
-            }
-            C4  =  ofRandom(0,Rand);
-            if(B4!=1)
-            {
-                B4  =   C4;
-                frameP8  = In;
-                cout<<"bang4---"<<C4<<endl;
-            }
-            C5  =  ofRandom(0,Rand);
-            if(B5!=1)
-            {
-                B5  =   C5;
-                frameP10  = In;
-                cout<<"bang5---"<<C5<<endl;
-            }
-            C6  =  ofRandom(0,Rand);
-            if(B6!=1)
-            {
-                B6  =   C6;
-                frameP12  = In;
-                cout<<"bang6---"<<C6<<endl;
-            }
-        }
-
-
-        if(R_Lect3==1 &&  Timer>endTime)
-        {
-            PlayerA1.setFrame(ofRandom(TotalNumFramesA1) );
-            PlayerB1.setFrame(ofRandom(TotalNumFramesB1) );
-            PlayerC1.setFrame(ofRandom(TotalNumFramesC1) );
-            PlayerD1.setFrame(ofRandom(TotalNumFramesC1) );
-            PlayerE1.setFrame(ofRandom(TotalNumFramesC1) );
-            PlayerF1.setFrame(ofRandom(TotalNumFramesC1) );
-
-
-        }
-
-        if(R_L1==1 &&  Timer>endTime)
-        {
-            PlayerA1.setFrame(ofRandom(TotalNumFramesA1) );
-        }
-        if(R_L2==1 &&  Timer>endTime)
-        {
-            PlayerB1.setFrame(ofRandom(TotalNumFramesB1) );
-        }
-        if(R_L3==1 &&  Timer>endTime)
-        {
-            PlayerC1.setFrame(ofRandom(TotalNumFramesC1) );
-        }
-        if(R_L4==1 &&  Timer>endTime)
-        {
-            PlayerD1.setFrame(ofRandom(TotalNumFramesD1) );
-        }
-        if(R_L5==1 &&  Timer>endTime)
-        {
-            PlayerE1.setFrame(ofRandom(TotalNumFramesE1) );
-        }
-        if(R_L6==1 &&  Timer>endTime)
-        {
-            PlayerF1.setFrame(ofRandom(TotalNumFramesF1) );
-        }
-        if(R_F1==1 &&  Timer>endTime)
-        {
-            PlayerG1.setFrame(ofRandom(TotalNumFramesG1) );
-        }
-        if(R_F2==1 &&  Timer>endTime)
-        {
-            PlayerH1.setFrame(ofRandom(TotalNumFramesH1) );
-            cout<<"R_F2"<<endl;
-        }
-
-        OpaCercle   =   255;
-
-    }
-    else
-    {
-        OpaCercle   =   0;
-    }
+////////////////////////////////////////////////////////    ofPushMatrix();
+////////////////////////////////////////////////////////    ofTranslate(20,20+360);
+////////////////////////////////////////////////////////    ofSetColor(255, 125, 0);
+////////////////////////////////////////////////////////    ofLine(0, 125, 250, 125);
+////////////////////////////////////////////////////////    ofSetColor(150, 150, 150);
+////////////////////////////////////////////////////////    float amplitude = 100.0f;
+////////////////////////////////////////////////////////    for (int i = 1; i < 250; i++)
+////////////////////////////////////////////////////////    {
+////////////////////////////////////////////////////////        float x1 = (float)i / 250.0;
+////////////////////////////////////////////////////////        float y1 = amplitude * audioInput[i];   //amplitude * sin( x1 * 2.0*PI );
+////////////////////////////////////////////////////////        float x2 = (float)(i - 1) / 250.0;
+////////////////////////////////////////////////////////        float y2 = amplitude * audioInput[i-1]; //amplitude * sin( x2 * 2.0*PI );
+////////////////////////////////////////////////////////        ofLine(x1 * 250.0f, -y1 + 125,
+////////////////////////////////////////////////////////               x2 * 250.0f, -y2 + 125);
+////////////////////////////////////////////////////////    }
+////////////////////////////////////////////////////////    ofSetRectMode(OF_RECTMODE_CENTER);
+////////////////////////////////////////////////////////    ofNoFill();
+////////////////////////////////////////////////////////    ofCircle(125, 125, rms * 250);
+////////////////////////////////////////////////////////    ofSetRectMode(OF_RECTMODE_CORNER);
+////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////    for (int i = 1; i < rms_values.size(); i++)
+////////////////////////////////////////////////////////    {
+////////////////////////////////////////////////////////        ofLine((i  ) * 250.0/25.0, -rms_values[i  ]*1000.0 + 250.0,
+////////////////////////////////////////////////////////               (i-1) * 250.0/25.0, -rms_values[i-1]*1000.0 + 250.0);
+////////////////////////////////////////////////////////    }
+////////////////////////////////////////////////////////    float average_rms = 0.0f;
+////////////////////////////////////////////////////////    for (int i = 0; i < rms_values.size(); i++)
+////////////////////////////////////////////////////////    {
+////////////////////////////////////////////////////////        average_rms = average_rms + rms_values[i];
+////////////////////////////////////////////////////////    }
+////////////////////////////////////////////////////////    average_rms = average_rms / rms_values.size();
+////////////////////////////////////////////////////////    float var_rms = 0.0f;
+////////////////////////////////////////////////////////    for (int i = 0; i < rms_values.size(); i++)
+////////////////////////////////////////////////////////    {
+////////////////////////////////////////////////////////        var_rms = var_rms + abs(rms_values[i] - average_rms);
+//////////////////////////////////////////////////////////         cout<<rms_values[i] - average_rms<<endl;
+////////////////////////////////////////////////////////    }
+////////////////////////////////////////////////////////    var_rms = var_rms / rms_values.size();
+////////////////////////////////////////////////////////    if (rms_values.back() > (average_rms + (Sens/68.5)*var_rms))
+////////////////////////////////////////////////////////    {
+////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////--------------------------------------------------------
+////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////        startTime = ofGetElapsedTimeMillis();
+////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////        //--------------------------------------------------------
+////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////        if(R_Open1==1   &&  Timer>endTime){
+////////////////////////////////////////////////////////            ofxOscMessage m;
+////////////////////////////////////////////////////////            m.setAddress("/R_Open1");
+////////////////////////////////////////////////////////            sender.sendMessage(m);
+////////////////////////////////////////////////////////        }
+////////////////////////////////////////////////////////        if(R_Open2==1   &&  Timer>endTime){
+////////////////////////////////////////////////////////            ofxOscMessage m;
+////////////////////////////////////////////////////////            m.setAddress("/R_Open2");
+////////////////////////////////////////////////////////            sender.sendMessage(m);
+////////////////////////////////////////////////////////        }
+////////////////////////////////////////////////////////        if(R_Open3==1   &&  Timer>endTime){
+////////////////////////////////////////////////////////            ofxOscMessage m;
+////////////////////////////////////////////////////////            m.setAddress("/R_Open3");
+////////////////////////////////////////////////////////            sender.sendMessage(m);
+////////////////////////////////////////////////////////        }
+////////////////////////////////////////////////////////        if(R_Open4==1   &&  Timer>endTime){
+////////////////////////////////////////////////////////            ofxOscMessage m;
+////////////////////////////////////////////////////////            m.setAddress("/R_Open4");
+////////////////////////////////////////////////////////            sender.sendMessage(m);
+////////////////////////////////////////////////////////        }
+////////////////////////////////////////////////////////        if(R_Open5==1   &&  Timer>endTime){
+////////////////////////////////////////////////////////            ofxOscMessage m;
+////////////////////////////////////////////////////////            m.setAddress("/R_Open5");
+////////////////////////////////////////////////////////            sender.sendMessage(m);
+////////////////////////////////////////////////////////        }
+////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////        if(R_Open6==1  &&  Timer>endTime){
+////////////////////////////////////////////////////////            ofxOscMessage m;
+////////////////////////////////////////////////////////            m.setAddress("/R_Open6");
+////////////////////////////////////////////////////////            sender.sendMessage(m);
+////////////////////////////////////////////////////////        }
+////////////////////////////////////////////////////////        if(Lum_x6  ==1 &&  Timer>endTime){
+////////////////////////////////////////////////////////            C1  =  ofRandom(0,Rand);
+////////////////////////////////////////////////////////            if(B1!=1)
+////////////////////////////////////////////////////////            {
+////////////////////////////////////////////////////////                B1 = C1;
+////////////////////////////////////////////////////////                frameP2  = In;
+////////////////////////////////////////////////////////                cout<<"bang1---"<<C1<<endl;
+////////////////////////////////////////////////////////            }
+////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////            C2  =  ofRandom(0,Rand);
+////////////////////////////////////////////////////////            if(B2!=1)
+////////////////////////////////////////////////////////            {
+////////////////////////////////////////////////////////                B2  =   C2;
+////////////////////////////////////////////////////////                frameP4  = In;
+////////////////////////////////////////////////////////                cout<<"bang2---"<<C2<<endl;
+////////////////////////////////////////////////////////            }
+////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////            C3  =  ofRandom(0,Rand);
+////////////////////////////////////////////////////////            if(B3!=1)
+////////////////////////////////////////////////////////            {
+////////////////////////////////////////////////////////                B3  =   C3;
+////////////////////////////////////////////////////////                frameP6  = In;
+////////////////////////////////////////////////////////                cout<<"bang3---"<<C3<<endl;
+////////////////////////////////////////////////////////            }
+////////////////////////////////////////////////////////            C4  =  ofRandom(0,Rand);
+////////////////////////////////////////////////////////            if(B4!=1)
+////////////////////////////////////////////////////////            {
+////////////////////////////////////////////////////////                B4  =   C4;
+////////////////////////////////////////////////////////                frameP8  = In;
+////////////////////////////////////////////////////////                cout<<"bang4---"<<C4<<endl;
+////////////////////////////////////////////////////////            }
+////////////////////////////////////////////////////////            C5  =  ofRandom(0,Rand);
+////////////////////////////////////////////////////////            if(B5!=1)
+////////////////////////////////////////////////////////            {
+////////////////////////////////////////////////////////                B5  =   C5;
+////////////////////////////////////////////////////////                frameP10  = In;
+////////////////////////////////////////////////////////                cout<<"bang5---"<<C5<<endl;
+////////////////////////////////////////////////////////            }
+////////////////////////////////////////////////////////            C6  =  ofRandom(0,Rand);
+////////////////////////////////////////////////////////            if(B6!=1)
+////////////////////////////////////////////////////////            {
+////////////////////////////////////////////////////////                B6  =   C6;
+////////////////////////////////////////////////////////                frameP12  = In;
+////////////////////////////////////////////////////////                cout<<"bang6---"<<C6<<endl;
+////////////////////////////////////////////////////////            }
+////////////////////////////////////////////////////////        }
+////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////        if(Opacity  ==1 &&  Timer>endTime){
+////////////////////////////////////////////////////////            C1  =  ofRandom(0,Rand);
+////////////////////////////////////////////////////////            if(B1!=1)
+////////////////////////////////////////////////////////            {
+////////////////////////////////////////////////////////                B1 = C1;
+////////////////////////////////////////////////////////                frameP2  = In;
+////////////////////////////////////////////////////////                cout<<Opacity<<C1<<endl;
+////////////////////////////////////////////////////////            }
+////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////            C2  =  ofRandom(0,Rand);
+////////////////////////////////////////////////////////            if(B2!=1)
+////////////////////////////////////////////////////////            {
+////////////////////////////////////////////////////////                B2  =   C2;
+////////////////////////////////////////////////////////                frameP4  = In;
+////////////////////////////////////////////////////////                cout<<"bang2---"<<C2<<endl;
+////////////////////////////////////////////////////////            }
+////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////            C3  =  ofRandom(0,Rand);
+////////////////////////////////////////////////////////            if(B3!=1)
+////////////////////////////////////////////////////////            {
+////////////////////////////////////////////////////////                B3  =   C3;
+////////////////////////////////////////////////////////                frameP6  = In;
+////////////////////////////////////////////////////////                cout<<"bang3---"<<C3<<endl;
+////////////////////////////////////////////////////////            }
+////////////////////////////////////////////////////////            C4  =  ofRandom(0,Rand);
+////////////////////////////////////////////////////////            if(B4!=1)
+////////////////////////////////////////////////////////            {
+////////////////////////////////////////////////////////                B4  =   C4;
+////////////////////////////////////////////////////////                frameP8  = In;
+////////////////////////////////////////////////////////                cout<<"bang4---"<<C4<<endl;
+////////////////////////////////////////////////////////            }
+////////////////////////////////////////////////////////            C5  =  ofRandom(0,Rand);
+////////////////////////////////////////////////////////            if(B5!=1)
+////////////////////////////////////////////////////////            {
+////////////////////////////////////////////////////////                B5  =   C5;
+////////////////////////////////////////////////////////                frameP10  = In;
+////////////////////////////////////////////////////////                cout<<"bang5---"<<C5<<endl;
+////////////////////////////////////////////////////////            }
+////////////////////////////////////////////////////////            C6  =  ofRandom(0,Rand);
+////////////////////////////////////////////////////////            if(B6!=1)
+////////////////////////////////////////////////////////            {
+////////////////////////////////////////////////////////                B6  =   C6;
+////////////////////////////////////////////////////////                frameP12  = In;
+////////////////////////////////////////////////////////                cout<<"bang6---"<<C6<<endl;
+////////////////////////////////////////////////////////            }
+////////////////////////////////////////////////////////        }
+////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////        if(R_Lect3==1 &&  Timer>endTime){
+////////////////////////////////////////////////////////            PlayerA1.setFrame(ofRandom(TotalNumFramesA1) );
+////////////////////////////////////////////////////////            PlayerB1.setFrame(ofRandom(TotalNumFramesB1) );
+////////////////////////////////////////////////////////            PlayerC1.setFrame(ofRandom(TotalNumFramesC1) );
+////////////////////////////////////////////////////////            PlayerD1.setFrame(ofRandom(TotalNumFramesC1) );
+////////////////////////////////////////////////////////            PlayerE1.setFrame(ofRandom(TotalNumFramesC1) );
+////////////////////////////////////////////////////////            PlayerF1.setFrame(ofRandom(TotalNumFramesC1) );
+////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////        }
+////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////        if(R_L1==1 &&  Timer>endTime){
+////////////////////////////////////////////////////////            PlayerA1.setFrame(ofRandom(TotalNumFramesA1) );
+////////////////////////////////////////////////////////        }
+////////////////////////////////////////////////////////        if(R_L2==1 &&  Timer>endTime){
+////////////////////////////////////////////////////////            PlayerB1.setFrame(ofRandom(TotalNumFramesB1) );
+////////////////////////////////////////////////////////        }
+////////////////////////////////////////////////////////        if(R_L3==1 &&  Timer>endTime){
+////////////////////////////////////////////////////////            PlayerC1.setFrame(ofRandom(TotalNumFramesC1) );
+////////////////////////////////////////////////////////        }
+////////////////////////////////////////////////////////        if(R_L4==1 &&  Timer>endTime){
+////////////////////////////////////////////////////////            PlayerD1.setFrame(ofRandom(TotalNumFramesD1) );
+////////////////////////////////////////////////////////        }
+////////////////////////////////////////////////////////        if(R_L5==1 &&  Timer>endTime){
+////////////////////////////////////////////////////////            PlayerE1.setFrame(ofRandom(TotalNumFramesE1) );
+////////////////////////////////////////////////////////        }
+////////////////////////////////////////////////////////        if(R_L6==1 &&  Timer>endTime){
+////////////////////////////////////////////////////////            PlayerF1.setFrame(ofRandom(TotalNumFramesF1) );
+////////////////////////////////////////////////////////        }
+////////////////////////////////////////////////////////        if(R_F1==1 &&  Timer>endTime){
+////////////////////////////////////////////////////////            PlayerG1.setFrame(ofRandom(TotalNumFramesG1) );
+////////////////////////////////////////////////////////        }
+////////////////////////////////////////////////////////        if(R_F2==1 &&  Timer>endTime){
+////////////////////////////////////////////////////////            PlayerH1.setFrame(ofRandom(TotalNumFramesH1) );
+////////////////////////////////////////////////////////            cout<<"R_F2"<<endl;
+////////////////////////////////////////////////////////        }
+////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////        OpaCercle   =   255;
+////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////    }
+////////////////////////////////////////////////////////    else
+////////////////////////////////////////////////////////    {
+////////////////////////////////////////////////////////        OpaCercle   =   0;
+////////////////////////////////////////////////////////    }
 
     ofEnableAlphaBlending();
     ofSetColor(255,125,0,OpaCercle) ;
@@ -1775,16 +1644,19 @@ void testApp::draw()
 
     ofSetColor(255,125,0);
     ofNoFill();
-    ofRect(638,18,Larg+4,Haut+4);
+    ofRect(xcarreG1-2,ycarreG1-2,Larg+4,Haut+4);
 
 
 
 
     ofSetColor(255,0,0);
-		ofDrawBitmapString(movieAdress, 200,20);
-		ofDrawBitmapString(XML.getValue("dirSize","24",0), 400,20);
+    ofDrawBitmapString(movieAdress, 200,20);
+    ofDrawBitmapString(XML.getValue("dirSize","24",0), 400,20);
 
 
+    ofSetColor(255,125,0) ;
+    ofFill();
+    ofCircle(xcarreG1-2,ycarreG1+(Haut/2), 4);
 
 }
 //--------------------------------------------------------------
@@ -2115,8 +1987,7 @@ void testApp::guiEvent(ofxUIEventArgs &e)
     {
         ofxUIButton *button = (ofxUIButton *) e.widget;
         cout <<"ofGetFrameNum()_"<<ofGetFrameNum()<< "\n";
-        if(button->getValue() == 1 )
-        {
+        if(button->getValue() == 1 ){
             B1  =   1;
             frameP2  = In;
             if(button->getValue() == 0 )
@@ -2133,8 +2004,7 @@ void testApp::guiEvent(ofxUIEventArgs &e)
     {
         ofxUIButton *button = (ofxUIButton *) e.widget;
         cout <<"ofGetFrameNum()_"<<ofGetFrameNum()<< "\n";
-        if(button->getValue() == 1 )
-        {
+        if(button->getValue() == 1 ){
             B2  =   1;
             frameP4  = In;
             if(button->getValue() == 0 )
@@ -2151,8 +2021,7 @@ void testApp::guiEvent(ofxUIEventArgs &e)
     {
         ofxUIButton *button = (ofxUIButton *) e.widget;
         cout <<"ofGetFrameNum()_"<<ofGetFrameNum()<< "\n";
-        if(button->getValue() == 1 )
-        {
+        if(button->getValue() == 1 ){
             B3  =   1;
             frameP6  = In;
             if(button->getValue() == 0 )
@@ -2320,26 +2189,22 @@ void testApp::guiEvent(ofxUIEventArgs &e)
     if(e.widget->getName() == "Cam")
     {
         ofxUIToggle *toggle = (ofxUIToggle *) e.widget;
-        if(toggle->getValue() ==  1)
-        {
+        if(toggle->getValue() ==  1){
             vidGrabber.setVerbose(true);
             vidGrabber.initGrabber(640,480);
             vidGrabber.setDeviceID(0);
         }
-        if(toggle->getValue() ==  0)
-        {
+        if(toggle->getValue() ==  0){
             vidGrabber.close();
         }
     }
     if(e.widget->getName() == "Opacity")
     {
         ofxUIToggle *toggle = (ofxUIToggle *) e.widget;
-        if(toggle->getValue() ==  1)
-        {
+        if(toggle->getValue() ==  1){
             Opacity=1;
         }
-        if(toggle->getValue() ==  0)
-        {
+        if(toggle->getValue() ==  0){
             Opacity=0;
         }
     }
@@ -2347,13 +2212,11 @@ void testApp::guiEvent(ofxUIEventArgs &e)
     if(e.widget->getName() == "800x600")
     {
         ofxUIToggle *toggle = (ofxUIToggle *) e.widget;
-        if(toggle->getValue() ==  1)
-        {
+        if(toggle->getValue() ==  1){
             Larg    =   800;
             Haut    =   600;
         }
-        if(toggle->getValue() ==  0)
-        {
+        if(toggle->getValue() ==  0){
             Larg    =   640;
             Haut    =   480;
         }
@@ -2361,8 +2224,7 @@ void testApp::guiEvent(ofxUIEventArgs &e)
     if(e.widget->getName() == "VideoGrid")
     {
         ofxUIToggle *toggle = (ofxUIToggle *) e.widget;
-        if(toggle->getValue() ==  1)
-        {
+        if(toggle->getValue() ==  1){
             ofxOscMessage m;
             m.setAddress("/bWindow");
             sender.sendMessage(m);
@@ -2376,8 +2238,7 @@ void testApp::guiEvent(ofxUIEventArgs &e)
     if(e.widget->getName() == "TimeLine")
     {
         ofxUIToggle *toggle = (ofxUIToggle *) e.widget;
-        if(toggle->getValue() ==  1)
-        {
+        if(toggle->getValue() ==  1){
             ofxOscMessage m;
             m.setAddress("/TimeLine");
             sender.sendMessage(m);
@@ -2390,13 +2251,23 @@ void testApp::guiEvent(ofxUIEventArgs &e)
     if(e.widget->getName() == "Warp")
     {
         ofxUIToggle *toggle = (ofxUIToggle *) e.widget;
-        if(toggle->getValue() ==  1)
-        {
+        if(toggle->getValue() ==  1){
             bWarp = true;
         }
         else
         {
             bWarp = false;
+        }
+    }
+    if(e.widget->getName() == "3/6Lect")
+    {
+        ofxUIToggle *toggle = (ofxUIToggle *) e.widget;
+        if(toggle->getValue() ==  1){
+            bNbrLect = true;
+        }
+        else
+        {
+            bNbrLect = false;
         }
     }
 
@@ -2569,12 +2440,10 @@ void testApp::newMidiMessage(ofxMidiMessage& msg)
     if(midiMessage.control  ==  1)
     {
         ((ofxUIToggle*)gui2->getWidget("R_L1"))->setValue(midiMessage.value);
-        if(midiMessage.value == 0)
-        {
+        if(midiMessage.value == 0){
             R_L1=0;
         }
-        if(midiMessage.value != 0)
-        {
+        if(midiMessage.value != 0){
             R_L1 = 1;
         }
 
@@ -2582,13 +2451,11 @@ void testApp::newMidiMessage(ofxMidiMessage& msg)
     if(midiMessage.control  ==  2)
     {
         ((ofxUIToggle*)gui2->getWidget("R_L2"))->setValue(midiMessage.value);
-        if(midiMessage.value == 0)
-        {
+        if(midiMessage.value == 0){
             R_L2=0;
         }
 
-        if(midiMessage.value != 0)
-        {
+        if(midiMessage.value != 0){
             R_L2 = 1;
 
         }
@@ -2597,12 +2464,10 @@ void testApp::newMidiMessage(ofxMidiMessage& msg)
     if(midiMessage.control  ==  3)
     {
         ((ofxUIToggle*)gui2->getWidget("R_L3"))->setValue(midiMessage.value);
-        if(midiMessage.value == 0)
-        {
+        if(midiMessage.value == 0){
             R_L3=0;
         }
-        if(midiMessage.value != 0)
-        {
+        if(midiMessage.value != 0){
             R_L3 = 1;
 
         }
@@ -2611,12 +2476,10 @@ void testApp::newMidiMessage(ofxMidiMessage& msg)
     if(midiMessage.control  ==  4)
     {
         ((ofxUIToggle*)gui2->getWidget("R_L4"))->setValue(midiMessage.value);
-        if(midiMessage.value == 0)
-        {
+        if(midiMessage.value == 0){
             R_L4=0;
         }
-        if(midiMessage.value != 0)
-        {
+        if(midiMessage.value != 0){
             R_L4 = 1;
 
         }
@@ -2624,12 +2487,10 @@ void testApp::newMidiMessage(ofxMidiMessage& msg)
     if(midiMessage.control  ==  5)
     {
         ((ofxUIToggle*)gui2->getWidget("R_L5"))->setValue(midiMessage.value);
-        if(midiMessage.value == 0)
-        {
+        if(midiMessage.value == 0){
             R_L5=0;
         }
-        if(midiMessage.value != 0)
-        {
+        if(midiMessage.value != 0){
             R_L5 = 1;
 
         }
@@ -2637,12 +2498,10 @@ void testApp::newMidiMessage(ofxMidiMessage& msg)
     if(midiMessage.control  ==  6)
     {
         ((ofxUIToggle*)gui2->getWidget("R_L6"))->setValue(midiMessage.value);
-        if(midiMessage.value == 0)
-        {
+        if(midiMessage.value == 0){
             R_L6=0;
         }
-        if(midiMessage.value != 0)
-        {
+        if(midiMessage.value != 0){
             R_L6 = 1;
 
         }
@@ -2650,14 +2509,12 @@ void testApp::newMidiMessage(ofxMidiMessage& msg)
     if(midiMessage.control  ==  7)
     {
         ((ofxUIToggle*)gui2->getWidget("R_F1"))->setValue(midiMessage.value);
-        if(midiMessage.value == 0)
-        {
+        if(midiMessage.value == 0){
             R_F1=0;
             R_F2=0;
 
         }
-        if(midiMessage.value != 0)
-        {
+        if(midiMessage.value != 0){
             R_F1 = 1;
             R_F2 = 1;
 
@@ -2684,12 +2541,10 @@ void testApp::newMidiMessage(ofxMidiMessage& msg)
     if(midiMessage.control  ==  17)
     {
 //                ((ofxUIToggle*)gui2->getWidget("Lum_x6"))->setValue(midiMessage.value);
-        if(midiMessage.value == 0)
-        {
+        if(midiMessage.value == 0){
 //                    B1=0;
         }
-        if(midiMessage.value != 0)
-        {
+        if(midiMessage.value != 0){
 
             B1 = 1;
             frameP2  = In;
@@ -2699,12 +2554,10 @@ void testApp::newMidiMessage(ofxMidiMessage& msg)
     if(midiMessage.control  ==  21)
     {
 //                ((ofxUIToggle*)gui2->getWidget("Lum_x6"))->setValue(midiMessage.value);
-        if(midiMessage.value == 0)
-        {
+        if(midiMessage.value == 0){
 //                B2=0;
         }
-        if(midiMessage.value != 0)
-        {
+        if(midiMessage.value != 0){
 
             B2 = 1;
             frameP4  = In;
@@ -2712,11 +2565,9 @@ void testApp::newMidiMessage(ofxMidiMessage& msg)
     }
     if(midiMessage.control  == 22 )
     {
-        if(midiMessage.value == 0)
-        {
+        if(midiMessage.value == 0){
         }
-        if(midiMessage.value != 0)
-        {
+        if(midiMessage.value != 0){
             B3 = 1;
             frameP6  = In;
         }
@@ -2724,33 +2575,27 @@ void testApp::newMidiMessage(ofxMidiMessage& msg)
 //
     if(midiMessage.control  == 23 )
     {
-        if(midiMessage.value == 0)
-        {
+        if(midiMessage.value == 0){
         }
-        if(midiMessage.value != 0)
-        {
+        if(midiMessage.value != 0){
             B4 = 1;
             frameP8  = In;
         }
     }
     if(midiMessage.control  ==  24)
     {
-        if(midiMessage.value == 0)
-        {
+        if(midiMessage.value == 0){
         }
-        if(midiMessage.value != 0)
-        {
+        if(midiMessage.value != 0){
             B5 = 1;
             frameP10  = In;
         }
     }
     if(midiMessage.control  ==  18)
     {
-        if(midiMessage.value == 0)
-        {
+        if(midiMessage.value == 0){
         }
-        if(midiMessage.value != 0)
-        {
+        if(midiMessage.value != 0){
             B6 = 1;
             frameP12  = In;
         }
@@ -2765,12 +2610,10 @@ void testApp::newMidiMessage(ofxMidiMessage& msg)
 //            }
     if(midiMessage.control  ==  19)
     {
-        if(midiMessage.value == 0)
-        {
+        if(midiMessage.value == 0){
 
         }
-        if(midiMessage.value != 0)
-        {
+        if(midiMessage.value != 0){
             B1 = 1;
             frameP2  = In;
             B2 = 1;
@@ -2845,8 +2688,7 @@ void testApp::keyPressed(int key)
         blendMode = OF_BLENDMODE_DISABLED;
         break;
     case 'w': // press 's' to save the warp coordinates to an XML file.
-        if(activateA1 == 0   )
-        {
+        if(activateA1 == 0   ){
             warperPlayerA1.activate();
             warperTV1.activate();
             activateA1  =  1;
@@ -2859,8 +2701,7 @@ void testApp::keyPressed(int key)
         }
         break;
     case 'x': // press 's' to save the warp coordinates to an XML file.
-        if(activateB1 == 0   )
-        {
+        if(activateB1 == 0   ){
             warperPlayerB1.activate();
             warperTV2.activate();
             activateB1  =  1;
@@ -2873,8 +2714,7 @@ void testApp::keyPressed(int key)
         }
         break;
     case 'c': // press 's' to save the warp coordinates to an XML file.
-        if(activateC1 == 0   )
-        {
+        if(activateC1 == 0   ){
             warperPlayerC1.activate();
             warperTV3.activate();
 
@@ -2888,8 +2728,7 @@ void testApp::keyPressed(int key)
         }
         break;
     case 'v': // press 's' to save the warp coordinates to an XML file.
-        if(activateD1 == 0   )
-        {
+        if(activateD1 == 0   ){
             warperPlayerD1.activate();
             warperTV4.activate();
             activateD1  =  1;
@@ -2902,8 +2741,7 @@ void testApp::keyPressed(int key)
         }
         break;
     case 'b': // press 's' to save the warp coordinates to an XML file.
-        if(activateE1 == 0   )
-        {
+        if(activateE1 == 0   ){
             warperPlayerE1.activate();
             warperTV5.activate();
             activateE1  =  1;
@@ -2916,8 +2754,7 @@ void testApp::keyPressed(int key)
         }
         break;
     case 'n': // press 's' to save the warp coordinates to an XML file.
-        if(activateF1 == 0   )
-        {
+        if(activateF1 == 0   ){
             warperPlayerF1.activate();
             warperTV6.activate();
             activateF1  =  1;
@@ -2929,7 +2766,7 @@ void testApp::keyPressed(int key)
             warperTV6.deactivate();
         }
         break;
-    case 's': // press 's' to save the warp coordinates to an XML file.
+    case 'S': // press 's' to save the warp coordinates to an XML file.
         warperPlayerA1.save("warpConfigA1.xml");
         warperPlayerB1.save("warpConfigB1.xml");
         warperPlayerC1.save("warpConfigC1.xml");
@@ -2937,8 +2774,20 @@ void testApp::keyPressed(int key)
         warperPlayerE1.save("warpConfigE1.xml");
         warperPlayerF1.save("warpConfigF1.xml");
         gui1->saveSettings("GUI1/guiSettings.xml");
-        XML.setValue("XML:xcarreA1", xcarreA1);
-        XML.setValue("XML:ycarreA1", ycarreA1);
+//        XML.setValue("XML:xcarreA1", xcarreA1);
+//        XML.setValue("XML:ycarreA1", ycarreA1);
+        XML.saveFile("XML.xml");
+        break;
+        case 'D': // press 's' to save the warp coordinates to an XML file.
+        warperPlayerA1.save("warpConfig2A1.xml");
+        warperPlayerB1.save("warpConfig2B1.xml");
+        warperPlayerC1.save("warpConfig2C1.xml");
+        warperPlayerD1.save("warpConfig2D1.xml");
+        warperPlayerE1.save("warpConfig2E1.xml");
+        warperPlayerF1.save("warpConfig2F1.xml");
+        gui1->saveSettings("GUI1/guiSettings.xml");
+//        XML.setValue("XML:xcarreA1", xcarreA1);
+//        XML.setValue("XML:ycarreA1", ycarreA1);
         XML.saveFile("XML.xml");
         break;
     case 'l':// press 'l' to load the warp coordinates from an XML file.
@@ -2955,9 +2804,27 @@ void testApp::keyPressed(int key)
         warperTV5.load("warpConfigE1.xml");
         warperTV6.load("warpConfigF1.xml");
         gui2->loadSettings("GUI2/guiSettings.xml");
-        xcarreA1 =  XML.getValue("XML:xcarreA1", 1);
-        ycarreA1 =  XML.getValue("XML:ycarreA1", 1);
+//        xcarreA1 =  XML.getValue("XML:xcarreA1", 1);
+//        ycarreA1 =  XML.getValue("XML:ycarreA1", 1);
         break;
+        case 'm':// press 'l' to load the warp coordinates from an XML file.
+        warperPlayerA1.load("warpConfig2A1.xml");
+        warperPlayerB1.load("warpConfig2B1.xml");
+        warperPlayerC1.load("warpConfig2C1.xml");
+        warperPlayerD1.load("warpConfig2D1.xml");
+        warperPlayerE1.load("warpConfig2E1.xml");
+        warperPlayerF1.load("warpConfig2F1.xml");
+        warperTV1.load("warpConfig2A1.xml");
+        warperTV2.load("warpConfig2B1.xml");
+        warperTV3.load("warpConfig2C1.xml");
+        warperTV4.load("warpConfig2D1.xml");
+        warperTV5.load("warpConfig2E1.xml");
+        warperTV6.load("warpConfig2F1.xml");
+        gui2->loadSettings("GUI2/guiSettings.xml");
+//        xcarreA1 =  XML.getValue("XML:xcarreA1", 1);
+//        ycarreA1 =  XML.getValue("XML:ycarreA1", 1);
+        break;
+
 //        case 'p':// press 'l' to load the warp coordinates from an XML file.
 //        ofSetWindowPosition(-5,300);
 //        ofSetWindowShape(1024,768);
@@ -3027,10 +2894,9 @@ void testApp::keyPressed(int key)
 ////////
 ////////
 ////////    	}
- if( key == 'q' )
+    if( key == 'q' )
     {
-        if(!bPosition)
-        {
+        if(!bPosition){
             bPosition = true;
         }
         else
@@ -3040,18 +2906,18 @@ void testApp::keyPressed(int key)
     }
     if( key == ' ' )
     {
-         fOpen1 =   fOpen1+1;
-         if(fOpen1 >=24){
-         fOpen1 = 0;
-         }
+        fOpen1 =   fOpen1+1;
+        if(fOpen1 >=24){
+            fOpen1 = 0;
+        }
 
-         PlayerA1.closeMovie();
-            movieAdress = XML.getValue("ajout:adres",Adress,fOpen1-1);
-            cout<<"movieAdress"<<movieAdress<<endl;
-            PlayerA1.loadMovie(movieAdress);
-            PlayerA1.play();
-            TotalNumFramesA1 = PlayerA1.getTotalNumFrames();
-            PlayerA1.setLoopState(OF_LOOP_NORMAL);
+        PlayerA1.closeMovie();
+        movieAdress = XML.getValue("ajout:adres",Adress,fOpen1-1);
+        cout<<"movieAdress"<<movieAdress<<endl;
+        PlayerA1.loadMovie(movieAdress);
+        PlayerA1.play();
+        TotalNumFramesA1 = PlayerA1.getTotalNumFrames();
+        PlayerA1.setLoopState(OF_LOOP_NORMAL);
     }
 
 
@@ -3070,6 +2936,7 @@ void testApp::keyReleased(int key)
     carreD1= 0;
     carreE1= 0;
     carreF1= 0;
+    carreG1= 0;
 
 //    PositionWarp.saveFile("warpConfigA1.xml");
 //    warperPlayerA1.load("warpConfigA1.xml");
@@ -3139,6 +3006,11 @@ void testApp::mouseDragged(int x, int y, int button)
         xcarreF1  =x;
         ycarreF1 =y;
     }
+    if(carreG1== 1)
+    {
+        xcarreG1  =x;
+        ycarreG1 =y-(Haut/2);
+    }
 
 //    carreA1=0;
 
@@ -3192,13 +3064,22 @@ void testApp::mousePressed(int x, int y, int button)
         carreE1= 0;
 
     }
-    if(x>=xcarreF1-10 &&    x<=xcarreF1+10 && y>=ycarreF1-10 &&    y<=ycarreF1+10 )
+    if(x>=xcarreF1-20 &&    x<=xcarreF1+10 && y>=ycarreF1-10 &&    y<=ycarreF1+10 )
     {
         carreF1= 1;
     }
     else
     {
         carreF1= 0;
+
+    }
+    if(x>=xcarreG1-20 &&    x<=xcarreG1+0 && y>=ycarreG1+(Haut/2)-10 &&    y<=ycarreG1+(Haut/2)+10 )
+    {
+        carreG1= 1;
+    }
+    else
+    {
+        carreG1= 0;
 
     }
 
@@ -3317,6 +3198,7 @@ void testApp::setGUI1()
 //    gui1->addWidgetRight(new ofxUIButton(dim*2, dim*2,  false, "VideoGrid"));
     gui1->addWidgetDown(new ofxUIToggle("800x600",false,dim*1.5, dim*1.5,   OFX_UI_FONT_SMALL));
     gui1->addWidgetRight(new ofxUIToggle("Warp",false,dim*1.5, dim*1.5,   OFX_UI_FONT_SMALL));
+    gui1->addWidgetRight(new ofxUIToggle("3/6Lect",false,dim*1.5, dim*1.5,   OFX_UI_FONT_SMALL));
     gui1->addSpacer();
 
     gui1->addSlider("background", 0.0, 255.0, backgroundColor, length,dim,60);
@@ -3428,5 +3310,4 @@ void testApp::setGUI4()
 //
 //    ofAddListener(gui4->newGUIEvent,this,&testApp::guiEvent);
 }
-
 
